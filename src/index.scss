@@ -1,0 +1,32 @@
+.graphs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 25vw;
+    height: 25vh;
+}
+
+#points {
+    width: 30%;
+    height: 30%;
+}
+#assists {
+    width: 30%;
+    height: 30%;
+}
+#rebounds {
+    width: 30%;
+    height: 30%;
+}
+#blocks {
+    width: 30%;
+    height: 30%;
+}
+#steals {
+    width: 30%;
+    height: 30%;
+}
+#minutes {
+    width: 30%;
+    height: 30%;
+}

@@ -1,4 +1,40 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+.graphs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 25vw;
+  height: 25vh;
+}
 
+#points {
+  width: 30%;
+  height: 30%;
+}
+
+#assists {
+  width: 30%;
+  height: 30%;
+}
+
+#rebounds {
+  width: 30%;
+  height: 30%;
+}
+
+#blocks {
+  width: 30%;
+  height: 30%;
+}
+
+#steals {
+  width: 30%;
+  height: 30%;
+}
+
+#minutes {
+  width: 30%;
+  height: 30%;
+}
