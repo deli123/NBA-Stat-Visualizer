@@ -1,32 +1,56 @@
-.graphs {
+.graphs-side {
+    display: inline-block;
+    width: 70%;
+    // height: 50vh;
+}
+
+// .graphs {
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     grid-template-rows: repeat(2, 1fr);
+// }
+
+ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    width: 25vw;
-    height: 25vh;
+    width: 99%;
+    height: 99%;
+    list-style: none;
+}
+
+li {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 1cm;
 }
 
 #points {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
 }
 #assists {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
 }
 #rebounds {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
 }
 #blocks {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
 }
 #steals {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
 }
 #minutes {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
 }
+
