@@ -4,7 +4,7 @@
   width: 70%;
 }
 
-ul {
+.graphs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -13,7 +13,7 @@ ul {
   list-style: none;
 }
 
-li {
+.graphs li {
   text-align: center;
   display: flex;
   justify-content: center;

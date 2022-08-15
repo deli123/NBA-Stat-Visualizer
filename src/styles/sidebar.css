@@ -4,3 +4,7 @@
     vertical-align: top;;
     height: 100vh;
 }
+
+.players li {
+    display: block;
+}
