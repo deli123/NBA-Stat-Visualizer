@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/styles/css_reset.css" />
-    <link rel="stylesheet" href="./src/styles/header.css" />
-    <link rel="stylesheet" href="./src/styles/other.css" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="stylesheet" href="./src/styles/header.css" />
+    <link rel="stylesheet" href="./src/styles/sidebar.css" />
+    <link rel="stylesheet" href="./src/styles/graphs.css" />
     <script src="./dist/main.js" defer></script>
     <title>NBA Stat Visualizer</title>
   </head>
@@ -15,35 +16,33 @@
     <header class="header">
       <nav class="header-nav">NBA Stat Visualizer</nav>
       <ul class="header-list">
-        <li>Github</li>
+        <!-- <li><img src="./assets/images/github-logo.png"></li> -->
         <li>LinkedIn</li>
         <li>Email</li>
       </ul>
     </header>
 
-    <div class="other">
-        <button>Add</button>
+    <div class="sidebar">
+      <input type="text" placeholder="Add a player" required></input> 
+      <button>Add</button>
+
+      <div class="player-container">
+        <h2>Players:</h2>
+     
+        <ul class="players"></ul>
+      </div>
+
     </div>
 
-    <!-- <div class="graphs-side">
-      <div class="graphs">
-        <canvas id="points"></canvas>
-        <canvas id="assists"></canvas>
-        <canvas id="rebounds"></canvas>
-        <canvas id="blocks"></canvas>
-        <canvas id="steals"></canvas>
-        <canvas id="minutes"></canvas>
-      </div>
-    </div> -->
     <div class="graphs-side">
-        <ul class="graphs">
-          <li><canvas id="points"></canvas></li>
-          <li><canvas id="assists"></canvas></li>
-          <li><canvas id="rebounds"></canvas></li>
-          <li><canvas id="blocks"></canvas></li>
-          <li><canvas id="steals"></canvas></li>
-          <li><canvas id="minutes"></canvas></li>
-        </ul>
-      </div>
+      <ul class="graphs">
+        <li><canvas id="points"></canvas></li>
+        <li><canvas id="assists"></canvas></li>
+        <li><canvas id="rebounds"></canvas></li>
+        <li><canvas id="blocks"></canvas></li>
+        <li><canvas id="steals"></canvas></li>
+        <li><canvas id="minutes"></canvas></li>
+      </ul>
+    </div>
   </body>
 </html>

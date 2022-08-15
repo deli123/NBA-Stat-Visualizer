@@ -1,17 +1,20 @@
 .header {
-    display: flex;
     background-color: black;
     color: white;
-    height: 50px;
+    height: 2cm;
     justify-content: center;
-    align-items: center;
+    /* text-align: center; */
 }
 
 .header-nav {
-    display: flex;
+    text-align: center;
+    font-size: larger;
+    padding-top: 5px;
 }
 
 .header-list {
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px;
 }
