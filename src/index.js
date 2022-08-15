@@ -1,5 +1,5 @@
 import Chart from "chart.js/auto";
-// import Util from "./scripts/utils";
+import { getUserInput } from "./scripts/add_player";
 
 const labels = ["January", "February", "March", "April", "May", "June"];
 
@@ -43,3 +43,4 @@ const reboundsChart = new Chart(ctxRebounds, config);
 const blocksChart = new Chart(ctxBlocks, config);
 const stealsChart = new Chart(ctxSteals, config);
 const minutesChart = new Chart(ctxMinutes, config);
+

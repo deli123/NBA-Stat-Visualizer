@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./src/styles/sidebar.css" />
     <link rel="stylesheet" href="./src/styles/graphs.css" />
     <script src="./dist/main.js" defer></script>
-    <script src="./src/scripts/add_player.js" defer></script>
+    <!-- <script type="module" src="./src/scripts/add_player.js" defer></script> -->
     <title>NBA Stat Visualizer</title>
   </head>
   <body>
@@ -28,9 +28,17 @@
         <input
           type="text"
           name="add-player"
-          placeholder="Add a player"
+          placeholder="Enter a player's name"
           required
         />
+        <div class="seasons-select">
+          <label for="season-start">Seasons:</label>
+
+          <select name="season-start" id="season-start"></select>
+          <label for="season-end">to:</label>
+          <select name="season-end" id="season-end"></select>
+        </div>
+
         <input type="submit" value="Add" />
       </form>
 
