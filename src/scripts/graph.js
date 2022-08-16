@@ -74,6 +74,7 @@ export class Graph {
   addData = async (userInput, category, color) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
     this.playerInfo.push([playerId, seasonStart]);
+
     if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
 
     const data = await this.getData(playerId, seasonStart, seasonEnd, category);
@@ -91,9 +92,9 @@ export class Graph {
       data: data,
     };
 
-    this.chart.data.labels = this.years;
     this.chart.data.datasets.push(dataset);
     this.updateDatasets(seasonStart);
+    this.chart.data.labels = this.years;
     this.chart.update();
   };
 
@@ -114,7 +115,6 @@ export class Graph {
     }
 
     this.years = missingYears.concat(this.years);
-    this.chart.data.labels = this.years;
   };
 
   // in order to keep the X-Axis (Season Year) consistent,
@@ -128,8 +128,7 @@ export class Graph {
       let startYear = this.playerInfo[i][1];
 
       if (newStartYear < startYear) {
-        let diff = startYear - newStartYear;
-        while (this.chart.data.datasets[i].data.length <= diff) {
+        while (this.chart.data.datasets[i].data.length < this.years.length) {
           this.chart.data.datasets[i].data.unshift(0);
         }
       }
