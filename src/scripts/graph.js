@@ -46,33 +46,43 @@ export class Graph {
   getData = async (id, seasonStart, seasonEnd, category) => {
     let abbrev = CATEGORIES[category];
     const data = [];
-    let i = seasonStart;
+
     for (let i = seasonStart; i <= seasonEnd; i++) {
       let url = `https://www.balldontlie.io/api/v1/season_averages?season=${i}&player_ids[]=${id}`;
       let obj;
       let res = await fetch(url);
       obj = await res.json();
-      data.push(obj.data[0][abbrev]);
+      // if (obj.data.length === 0) {
+      //   data.push(0);
+      // } else {
+      //   data.push(obj.data[0][abbrev]);
+      // }
+      try {
+        data.push(obj.data[0][abbrev]);
+      } catch {
+        data.push(0);
+      }
+
     }
 
     return data;
   };
 
-  // because addData() calls the async getData() function,
+  // because addData() calls the getData() async function,
   // this function also has to be async
   addData = async (userInput, category, color) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
     this.years = this.getYears(seasonStart, seasonEnd);
-    
+
     const data = await this.getData(playerId, seasonStart, seasonEnd, category);
-    
-    console.log(`${category}: `, data);
+
+    // console.log(`${category}: `, data);
 
     if (category === "minutes") {
-        for (let i = 0; i < data.length; i++) {
-            data[i] = this.convertMinsToDecimal(data[i]);
-        }
-        console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        data[i] = this.convertMinsToDecimal(data[i]);
+      }
+      console.log(data);
     }
 
     const dataset = {
@@ -90,9 +100,9 @@ export class Graph {
   convertMinsToDecimal = (minutes) => {
     let mins = minutes.split(":");
     for (let i = 0; i < mins.length; i++) {
-        mins[i] = parseInt(mins[i]);
+      mins[i] = parseInt(mins[i]);
     }
-    let decimal = mins[0] + (mins[1] / 60);
+    let decimal = mins[0] + mins[1] / 60;
     return decimal;
-  }
+  };
 }

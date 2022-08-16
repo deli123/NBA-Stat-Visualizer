@@ -39,6 +39,14 @@ export const addPlayer = (e) => {
 };
 
 const findPlayer = async (inputName) => {
+  let seasonStart = document.getElementById("season-start").value;
+  let seasonEnd = document.getElementById("season-end").value;
+
+  if (seasonStart > seasonEnd) {
+    alert("Invalid season range");
+    return;
+  }
+
   const url = `https://www.balldontlie.io/api/v1/players?search=${inputName}`;
   let obj;
   const res = await fetch(url);
@@ -47,11 +55,9 @@ const findPlayer = async (inputName) => {
   if (obj.data.length > 1 || obj.data.length === 0) {
     alert("Unable to find player, please enter an exact name");
   } else {
-    let seasonStart = document.getElementById("season-start").value;
-    let seasonEnd = document.getElementById("season-end").value;
     let playerName = obj.data[0].first_name + " " + obj.data[0].last_name;
     userInput.push([obj.data[0].id, playerName, seasonStart, seasonEnd]);
-    console.log(userInput);
+    // console.log(userInput);
 
     _addPlayerHelper(playerName);
     const color = Util.generateRandomColor();
