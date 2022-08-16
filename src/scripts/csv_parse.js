@@ -63,5 +63,5 @@ export const getPlayerData = async (playerName, seasonStart, seasonEnd, category
 
 
 
-getPlayerData("Draymond Green", 2012, 2021, "minutes");
+// getPlayerData("Draymond Green", 2012, 2021, "minutes");
 // exports.getPlayerData = getPlayerData;

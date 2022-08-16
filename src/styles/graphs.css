@@ -1,5 +1,5 @@
 .graphs-side {
-  background-color: white;
+  background-color: transparent;
   display: inline-block;
   width: 70%;
 }
@@ -22,4 +22,9 @@
   width: 100%;
   margin-bottom: 1cm;
   z-index: 1;
+}
+
+.modal {
+  border: 1px solid black;
+  display: none;
 }

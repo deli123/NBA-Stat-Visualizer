@@ -27,6 +27,7 @@
     outline: 3px solid red;
     border-radius: 5px;
     width: 75%;
+    height: 20%;
 }
 
 .players-container {
@@ -37,7 +38,7 @@
     outline: 3px solid blue;
     border-radius: 5px;
     width: 75%;
-    height: 60%;
+    height: 55%;
 }
 
 .players-container h2 {
@@ -47,18 +48,24 @@
 
 input[type="submit"], select {
     text-decoration: none;
-    display: inline-block;
     background-color: burlywood;
     font-weight: bold;
     border-radius: 5px;
 }
 
-.players li {
-    display: block;
+input[type="submit"] {
+    height: 1cm;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 input[type="submit"]:hover {
     background-color: lightgray;
-    font-weight: bolder;
     opacity: 0.5;
+    align-items: baseline;
+}
+
+.players li {
+    display: block;
+    font-weight: bolder;
 }
