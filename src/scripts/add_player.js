@@ -58,7 +58,6 @@ const findPlayer = async (inputName) => {
 
     let graphs = getGraphs();
     for (let i = 0; i < graphs.length; i++) {
-      // console.log(graphs[i].category);
       graphs[i].addData(
         userInput[userInput.length - 1],
         graphs[i].category,

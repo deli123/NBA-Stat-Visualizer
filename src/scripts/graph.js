@@ -1,35 +1,5 @@
 import Chart from "chart.js/auto";
 
-const labels = ["January", "February", "March", "April", "May", "June"];
-
-const dataset1 = {
-  label: "Dataset 1",
-  backgroundColor: "rgb(255, 99, 132)",
-  borderColor: "rgb(255, 99, 132)",
-  data: [0, 10, 5, 2, 45, 45],
-};
-
-const dataset2 = {
-  label: "Dataset 2",
-  backgroundColor: "rgb(255, 99, 132)",
-  borderColor: "rgb(255, 99, 132)",
-  data: [0, 10, 5, 2, 20, 30, 45].reverse(),
-};
-
-const data = {
-  labels: [],
-  datasets: [],
-};
-
-const config = {
-  type: "line",
-  data: data,
-  options: {
-    // responsive: true,
-    maintainAspectRatio: true,
-  },
-};
-
 const CATEGORIES = {
   points: "pts",
   assists: "ast",
@@ -85,7 +55,6 @@ export class Graph {
       data.push(obj.data[0][abbrev]);
     }
 
-    // console.log(abbrev, data);
     return data;
   };
 
@@ -93,9 +62,7 @@ export class Graph {
   // this function also has to be async
   addData = async (userInput, category, color) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
-    // console.log("addData: ", playerId, playerName, seasonStart, seasonEnd);
     this.years = this.getYears(seasonStart, seasonEnd);
-    // console.log("seasons: ", this.years);
     
     const data = await this.getData(playerId, seasonStart, seasonEnd, category);
     
