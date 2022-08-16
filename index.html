@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./src/styles/sidebar.css" />
     <link rel="stylesheet" href="./src/styles/graphs.css" />
     <script src="./dist/main.js" defer></script>
-    <!-- <script type="module" src="./src/scripts/add_player.js" defer></script> -->
+    <!-- <script type="module" src="./src/scripts/csv_parse.js" defer></script> -->
     <title>NBA Stat Visualizer</title>
   </head>
   <body>
@@ -24,34 +24,38 @@
     </header>
 
     <div class="sidebar">
-      <form class="player-form">
-        <input
-          type="text"
-          name="add-player"
-          placeholder="Enter a player's name"
-          required
-        />
-        <div class="seasons-select">
-          <label for="season-start">Seasons:</label>
+      <div class="form">
+        <div class="sidebar-title">Add a player here!</div>
+        <form class="player-form">
+          <input
+            type="text"
+            name="add-player"
+            placeholder="Enter a player's name"
+            required
+          />
+          <div class="seasons-select">
+            <label for="season-start">Seasons:</label>
 
-          <select name="season-start" id="season-start"></select>
-          <label for="season-end">to:</label>
-          <select name="season-end" id="season-end"></select>
-        </div>
+            <select name="season-start" id="season-start"></select>
+            <label for="season-end">to:</label>
+            <select name="season-end" id="season-end"></select>
+          </div>
 
-        <input type="submit" value="Add" />
-      </form>
-      <form class="random-form">
-        <input type="submit" value="Get a random player" />
-      </form>
-
-      <div class="player-container">
+          <input type="submit" value="Add" />
+        </form>
+        <form class="random-form">or you can...
+          <input type="submit" value="Add a random player" />
+        </form>
+      </div>
+      
+      <div class="players-container">
         <h2>Players:</h2>
-
+        
         <ul class="players"></ul>
       </div>
     </div>
-
+  </div>
+    
     <div class="graphs-side">
       <ul class="graphs">
         <li><canvas id="points"></canvas></li>

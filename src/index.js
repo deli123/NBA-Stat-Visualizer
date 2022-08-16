@@ -1,5 +1,6 @@
 import { Graph } from "./scripts/graph";
 import * as PlayerForm from "./scripts/add_player"
+// import { getPlayerData } from "./scripts/csv_parse.js";
 
 const playerForm = document.querySelector(".player-form");
 const randomForm = document.querySelector(".random-form");
@@ -26,3 +27,5 @@ const graphs = [points, assists, rebounds, blocks, steals, minutes];
 export const getGraphs = () => {
   return graphs;
 }
+
+// getPlayerData("Draymond Green", 2012, 2021, "minutes");

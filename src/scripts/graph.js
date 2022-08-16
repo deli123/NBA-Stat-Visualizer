@@ -15,6 +15,7 @@ export class Graph {
       type: "line",
       data: [],
       options: {
+        responsive: true,
         maintainAspectRatio: true,
         plugins: {
           legend: {

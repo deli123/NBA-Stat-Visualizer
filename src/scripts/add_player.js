@@ -76,6 +76,7 @@ const _addPlayerHelper = async (playerName, seasonStart, seasonEnd, color) => {
   let li = document.createElement("li");
   li.innerText = `${playerName} (${seasonStart} - ${seasonEnd})`;
   li.style.color = color;
+  li.setAttribute("id", playerName);
   players.appendChild(li);
 };
 

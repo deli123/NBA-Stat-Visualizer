@@ -3,8 +3,62 @@
     width: 25%;
     vertical-align: top;;
     height: 100vh;
+    margin: 1cm;
+    outline: 5px solid black;
+    border-radius: 5px;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+.sidebar-title {
+    text-decoration: underline;
+}
+
+.player-form {
+    display: inline-block;
+}
+
+.form {
+    display: inline-block;
+    margin: 1cm;
+    padding: calc(1cm / 2);
+    align-items: center;
+    outline: 3px solid red;
+    border-radius: 5px;
+    width: 75%;
+}
+
+.players-container {
+    display: inline-block;
+    margin: 1cm;
+    padding: calc(1cm / 2);
+    align-items: center;
+    outline: 3px solid blue;
+    border-radius: 5px;
+    width: 75%;
+    height: 60%;
+}
+
+.players-container h2 {
+    text-decoration: underline;
+    margin: 5px;
+}
+
+input[type="submit"], select {
+    text-decoration: none;
+    display: inline-block;
+    background-color: burlywood;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .players li {
     display: block;
+}
+
+input[type="submit"]:hover {
+    background-color: lightgray;
+    font-weight: bolder;
+    opacity: 0.5;
 }
