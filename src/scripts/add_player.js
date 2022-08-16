@@ -1,5 +1,5 @@
 import { getGraphs } from "../index";
-import * as Util from "./utils"
+import * as Util from "./utils";
 
 const playerContainer = document.querySelector(".player-container");
 const players = document.querySelector(".players");
@@ -51,7 +51,7 @@ const findPlayer = async (inputName) => {
     let seasonEnd = document.getElementById("season-end").value;
     let playerName = obj.data[0].first_name + " " + obj.data[0].last_name;
     userInput.push([obj.data[0].id, playerName, seasonStart, seasonEnd]);
-    console.log(userInput)
+    console.log(userInput);
 
     _addPlayerHelper(playerName);
     const color = Util.generateRandomColor();
@@ -59,7 +59,11 @@ const findPlayer = async (inputName) => {
     let graphs = getGraphs();
     for (let i = 0; i < graphs.length; i++) {
       // console.log(graphs[i].category);
-      graphs[i].addData(userInput[userInput.length - 1], graphs[i].category, color);
+      graphs[i].addData(
+        userInput[userInput.length - 1],
+        graphs[i].category,
+        color
+      );
     }
   }
 };
@@ -70,9 +74,15 @@ const _addPlayerHelper = async (playerName) => {
   players.appendChild(li);
 };
 
-// export const getUserInput = () => {
-//   return userInput;
-// }
-
-// seasonsDropdown();
-// playerForm.addEventListener("submit", addPlayer);
+export const addRandomPlayer = (e) => {
+  e.preventDefault();
+  let graphs = getGraphs();
+  const color = Util.generateRandomColor();
+  for (let i = 0; i < graphs.length; i++) {
+    graphs[i].addData(
+      [237, "Lebron James", 2015, 2017],
+      graphs[i].category,
+      color
+    );
+  }
+};

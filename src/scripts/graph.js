@@ -96,7 +96,9 @@ export class Graph {
     // console.log("addData: ", playerId, playerName, seasonStart, seasonEnd);
     this.years = this.getYears(seasonStart, seasonEnd);
     // console.log("seasons: ", this.years);
+    
     const data = await this.getData(playerId, seasonStart, seasonEnd, category);
+    
     console.log(`${category}: `, data);
 
     if (category === "minutes") {

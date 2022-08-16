@@ -2,8 +2,10 @@ import { Graph } from "./scripts/graph";
 import * as PlayerForm from "./scripts/add_player"
 
 const playerForm = document.querySelector(".player-form");
+const randomForm = document.querySelector(".random-form");
 PlayerForm.createSeasonsDropdown();
 playerForm.addEventListener("submit", PlayerForm.addPlayer);
+randomForm.addEventListener("submit", PlayerForm.addRandomPlayer);
 
 const ctxPoints = document.getElementById("points").getContext("2d");
 const ctxAssists = document.getElementById("assists").getContext("2d");
@@ -24,19 +26,3 @@ const graphs = [points, assists, rebounds, blocks, steals, minutes];
 export const getGraphs = () => {
   return graphs;
 }
-
-// const url = `https://www.balldontlie.io/api/v1/players?search=james`;
-// let obj = [];
-// fetch(url).then(response => response.json()).then(response => obj = response);
-// console.log(obj);
-
-// async function foo() {
-//   let obj;
-//   const res = await fetch(url);
-//   obj = await res.json();
-//   // console.log(obj.data);
-//   // console.log(obj.data[0].first_name);
-//   console.log(obj.data.length);
-// }
-
-// foo();
