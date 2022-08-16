@@ -31,6 +31,7 @@ export class Graph {
     this.chart = new Chart(context, config);
     this.category = category;
     this.years;
+    this.playerInfo = [];
   }
 
   getYears = (seasonStart, seasonEnd) => {
@@ -44,6 +45,7 @@ export class Graph {
   };
 
   getData = async (id, seasonStart, seasonEnd, category) => {
+    this.playerId = id;
     let abbrev = CATEGORIES[category];
     const data = [];
 
@@ -52,17 +54,16 @@ export class Graph {
       let obj;
       let res = await fetch(url);
       obj = await res.json();
-      // if (obj.data.length === 0) {
-      //   data.push(0);
-      // } else {
-      //   data.push(obj.data[0][abbrev]);
-      // }
-      try {
-        data.push(obj.data[0][abbrev]);
-      } catch {
-        data.push(0);
-      }
 
+      if (obj.data.length === 0) {
+        if (abbrev === "min") {
+          data.push("00:00");
+        } else {
+          data.push(0);
+        }
+      } else {
+        data.push(obj.data[0][abbrev]);
+      }
     }
 
     return data;
@@ -72,17 +73,15 @@ export class Graph {
   // this function also has to be async
   addData = async (userInput, category, color) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
-    this.years = this.getYears(seasonStart, seasonEnd);
+    this.playerInfo.push([playerId, seasonStart]);
+    if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
 
     const data = await this.getData(playerId, seasonStart, seasonEnd, category);
-
-    // console.log(`${category}: `, data);
 
     if (category === "minutes") {
       for (let i = 0; i < data.length; i++) {
         data[i] = this.convertMinsToDecimal(data[i]);
       }
-      console.log(data);
     }
 
     const dataset = {
@@ -94,6 +93,7 @@ export class Graph {
 
     this.chart.data.labels = this.years;
     this.chart.data.datasets.push(dataset);
+    this.updateDatasets(seasonStart);
     this.chart.update();
   };
 
@@ -104,5 +104,35 @@ export class Graph {
     }
     let decimal = mins[0] + mins[1] / 60;
     return decimal;
+  };
+
+  addMissingYears = (newStartYear) => {
+    const oldStartYear = this.years[0];
+    let missingYears = [];
+    for (let i = newStartYear; i < oldStartYear; i++) {
+      missingYears.push(i);
+    }
+
+    this.years = missingYears.concat(this.years);
+    this.chart.data.labels = this.years;
+  };
+
+  // in order to keep the X-Axis (Season Year) consistent,
+  // update the dataset by filling in the missing years (only at the beginning)
+  updateDatasets = (newStartYear) => {
+    if (newStartYear < this.years[0]) {
+      this.addMissingYears(newStartYear);
+    }
+
+    for (let i = 0; i < this.chart.data.datasets.length; i++) {
+      let startYear = this.playerInfo[i][1];
+
+      if (newStartYear < startYear) {
+        let diff = startYear - newStartYear;
+        while (this.chart.data.datasets[i].data.length <= diff) {
+          this.chart.data.datasets[i].data.unshift(0);
+        }
+      }
+    }
   };
 }

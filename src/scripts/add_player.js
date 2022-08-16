@@ -57,10 +57,9 @@ const findPlayer = async (inputName) => {
   } else {
     let playerName = obj.data[0].first_name + " " + obj.data[0].last_name;
     userInput.push([obj.data[0].id, playerName, seasonStart, seasonEnd]);
-    // console.log(userInput);
 
-    _addPlayerHelper(playerName);
     const color = Util.generateRandomColor();
+    _addPlayerHelper(playerName, seasonStart, seasonEnd, color);
 
     let graphs = getGraphs();
     for (let i = 0; i < graphs.length; i++) {
@@ -73,9 +72,10 @@ const findPlayer = async (inputName) => {
   }
 };
 
-const _addPlayerHelper = async (playerName) => {
+const _addPlayerHelper = async (playerName, seasonStart, seasonEnd, color) => {
   let li = document.createElement("li");
-  li.innerText = playerName;
+  li.innerText = `${playerName} (${seasonStart} - ${seasonEnd})`;
+  li.style.color = color;
   players.appendChild(li);
 };
 
