@@ -1,5 +1,6 @@
 import { getGraphs } from "../index";
 import * as Util from "./utils";
+import * as playerData from "./player_names"
 
 const playerContainer = document.querySelector(".player-container");
 const players = document.querySelector(".players");
@@ -86,18 +87,18 @@ export const addRandomPlayer = (e) => {
   const color = Util.generateRandomColor();
   let id = 0;
   let playerName = "Draymond Green";
-  let seasonStart = 2015;
-  let seasonEnd = 2017;
+  let seasonStart = Util.generateRandomInt(2008, 2014);
+  let seasonEnd = Util.generateRandomInt(2014, 2021);
 
   _addPlayerHelper(playerName, seasonStart, seasonEnd);
-  // for (let i = 0; i < graphs.length; i++) {
-  //   graphs[i].addPlayerData(
-  //     id,
-  //     playerName,
-  //     seasonStart,
-  //     seasonEnd,
-  //     graphs[i].category,
-  //     color
-  //   );
-  // }
+  for (let i = 0; i < graphs.length; i++) {
+    graphs[i].addPlayerData(
+      id,
+      playerName,
+      seasonStart,
+      seasonEnd,
+      graphs[i].category,
+      color
+    );
+  }
 };

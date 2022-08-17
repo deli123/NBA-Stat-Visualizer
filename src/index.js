@@ -28,4 +28,9 @@ export const getGraphs = () => {
   return graphs;
 };
 
+// window.addEventListener('afterprint', () => {
+//   for (let i = 0; i < graphs.length; i++) {
+//     graphs[i].resize();
+//   }
+// });
 // getPlayerData("Draymond Green", 2012, 2021, "minutes");

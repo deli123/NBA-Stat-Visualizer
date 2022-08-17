@@ -19,7 +19,7 @@ export class Graph {
         maintainAspectRatio: true,
         plugins: {
           legend: {
-            position: "top",
+            position: "bottom",
           },
           title: {
             display: true,
@@ -140,61 +140,56 @@ export class Graph {
     }
   };
 
-  // addPlayerData = (
-  //   playerId,
-  //   playerName,
-  //   seasonStart,
-  //   seasonEnd,
-  //   category,
-  //   color
-  // ) => {
-  //   this.playerInfo.push([playerId, seasonStart]);
+  addPlayerData = async (
+    playerId,
+    playerName,
+    seasonStart,
+    seasonEnd,
+    category,
+    color
+  ) => {
+    this.playerInfo.push([playerId, seasonStart]);
 
-  //   if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
+    if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
+    let data = [];
 
-  //   let parsedData = fetch('../../assets/player-data.json').then(respon);
-  //   // let res = await parsedData.json();
-  //   console.log(parsedData);
-    // let data = [];
-    // let stat = CATEGORIES[category];
+    let stat = CATEGORIES[category];
+    if (category === "minutes") {
+      stat = "MP";
+    } else if (category === "rebounds") {
+      stat = "TRB";
+    } else {
+      stat = CATEGORIES[category].toUpperCase();
+    }
 
-    // if (category === "minutes") {
-    //   stat = "MP";
-    // } else {
-    //   stat = CATEGORIES[category].toUpperCase();
-    // }
+    let parsedData = await fetch("./player-data.json");
+    let res = await parsedData.json();
 
-    // for (let i = 0; i < res.length; i++) {
-    //   if (res[i].NAME === playerName) {
-    //     let seasons = res[i].Season.split("-");
-    //     let season = parseInt(seasons[0]);
-    //     if (season >= seasonStart && season <= seasonEnd) {
-    //       let datum = res[i][stat];
-    //       data.push(parseFloat(datum));
-    //     }
-    //   }
-    // }
+    for (let i = 0; i < res.length; i++) {
+      if (res[i].NAME === playerName) {
+        let seasons = res[i].Season.split("-");
+        let season = parseInt(seasons[0]);
+        if (season >= seasonStart && season <= seasonEnd) {
+          let datum = res[i][stat];
+          data.push(parseFloat(datum));
+        }
+      }
+    }
 
-    // if (category === "minutes") {
-    //   for (let i = 0; i < data.length; i++) {
-    //     data[i] = this.convertMinsToDecimal(data[i]);
-    //   }
-    // }
+    const dataset = {
+      label: playerName,
+      backgroundColor: color,
+      borderColor: color,
+      data: data,
+    };
 
-    // const dataset = {
-    //   label: playerName,
-    //   backgroundColor: color,
-    //   borderColor: color,
-    //   data: data,
-    // };
+    this.chart.data.datasets.push(dataset);
+    this.updateDatasets(seasonStart);
+    this.chart.data.labels = this.years;
 
-    // this.chart.data.datasets.push(dataset);
-    // this.updateDatasets(seasonStart);
-    // this.chart.data.labels = this.years;
+    let li = document.querySelector(".graphs");
+    li.style.backgroundColor = "white";
 
-    // let li = document.querySelector(".graphs");
-    // li.style.backgroundColor = "white";
-
-    // this.chart.update();
-  // };
+    this.chart.update();
+  };
 }

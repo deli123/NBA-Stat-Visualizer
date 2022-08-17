@@ -14,8 +14,8 @@ const CATEGORIES = {
   minutes: "min",
 };
 
-// const csvFilePath = '../../assets/data/player-data.csv'
-const csvFilePath = path.join(__dirname, "../../assets/data/player-data.csv");
+// const csvFilePath = './player-data.csv'
+// const csvFilePath = path.join(__dirname, "../../assets/data/player-data.csv");
 // const csvFilePath = path.dirname("../../assets/data/player-data.csv")
 
 // Function to read csv which returns a promise so you can do async / await.

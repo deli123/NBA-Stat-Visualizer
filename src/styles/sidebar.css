@@ -1,10 +1,10 @@
 .sidebar {
     display: inline-block;
-    width: 25%;
+    width: 20%;
     vertical-align: top;;
-    height: 100vh;
+    height: 100%;
     margin: 1cm;
-    outline: 5px solid black;
+    outline: 5px dashed black;
     border-radius: 5px;
     font-style: italic;
     font-weight: bolder;
@@ -15,30 +15,26 @@
     text-decoration: underline;
 }
 
-.player-form {
-    display: inline-block;
-}
-
 .form {
     display: inline-block;
-    margin: 1cm;
-    padding: calc(1cm / 2);
+    margin: 15px;
+    padding: 5px;
     align-items: center;
-    outline: 3px solid red;
+    /* outline: 3px solid red; */
     border-radius: 5px;
-    width: 75%;
+    width: 90%;
     height: 20%;
 }
 
 .players-container {
     display: inline-block;
-    margin: 1cm;
-    padding: calc(1cm / 2);
+    margin: 5px;
+    padding: 1px;
     align-items: center;
-    outline: 3px solid blue;
+    /* outline: 3px solid blue; */
     border-radius: 5px;
-    width: 75%;
-    height: 55%;
+    width: 95%;
+    height: 72.5%;
 }
 
 .players-container h2 {
