@@ -42,3 +42,22 @@ img {
 #git-logo {
   padding-right: 4px;
 }
+
+p {
+  margin-left: 7.5px;
+}
+
+#n {
+  color: blue;
+  margin: 0;
+}
+
+#b {
+  color: white;
+  margin: 0;
+}
+
+#a {
+  color: red;
+  margin: 0;
+}
