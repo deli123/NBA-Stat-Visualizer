@@ -1,11 +1,12 @@
 import { getGraphs } from "../index";
 import * as Util from "./utils";
-import * as playerData from "./player_names"
+import * as Players from "./players"
 
 const playerContainer = document.querySelector(".player-container");
 const players = document.querySelector(".players");
 const playerForm = document.querySelector(".player-form");
 const userInput = [];
+let index = 0;
 
 export const createSeasonsDropdown = () => {
   let currentYear = new Date().getFullYear() - 1;
@@ -86,9 +87,11 @@ export const addRandomPlayer = (e) => {
   let graphs = getGraphs();
   const color = Util.generateRandomColor();
   let id = 0;
-  let playerName = "Draymond Green";
-  let seasonStart = Util.generateRandomInt(2008, 2014);
-  let seasonEnd = Util.generateRandomInt(2014, 2021);
+  let playerName = Players.players[index];
+  index += 1;
+  if (index === Players.players.length) index = 0;
+  let seasonStart = Util.generateRandomInt(2008, 2013);
+  let seasonEnd = Util.generateRandomInt(2013, 2021);
 
   _addPlayerHelper(playerName, seasonStart, seasonEnd);
   for (let i = 0; i < graphs.length; i++) {
