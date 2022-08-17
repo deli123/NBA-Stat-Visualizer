@@ -7,8 +7,9 @@
   outline: 5px dashed black;
   border-radius: 5px;
   font-style: italic;
-  font-weight: bolder;
+  font-weight: 900;
   font-size: x-large;
+  background-color: bisque;
 }
 
 .sidebar-title {
@@ -31,7 +32,6 @@
   margin: 5px;
   padding: 1px;
   align-items: center;
-  /* outline: 3px solid blue; */
   border-radius: 5px;
   width: 95%;
   height: 72.5%;

@@ -1,71 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/styles/css_reset.css" />
-    <link rel="stylesheet" href="./dist/main.css" />
-    <link rel="stylesheet" href="./src/styles/header.css" />
-    <link rel="stylesheet" href="./src/styles/sidebar.css" />
-    <link rel="stylesheet" href="./src/styles/graphs.css" />
-    <script src="./dist/main.js" defer></script>
-    <!-- <script type="module" src="./src/scripts/csv_parse.js" defer></script> -->
-    <title>NBA Stat Visualizer</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="header-nav">NBA Stat Visualizer</nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/styles/css_reset.css" />
+  <link rel="stylesheet" href="./dist/main.css" />
+  <link rel="stylesheet" href="./src/styles/header.css" />
+  <link rel="stylesheet" href="./src/styles/sidebar.css" />
+  <link rel="stylesheet" href="./src/styles/graphs.css" />
+  <script src="./dist/main.js" defer></script>
+  <title>NBA Stat Visualizer</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="dummy"></div>
+      <h1>NBA Stat Visualizer</h1>
       <ul class="header-list">
-        <!-- <li><img src="./assets/images/github-logo.png"></li> -->
-        <li>LinkedIn</li>
-        <li>Email</li>
+        <li><a href="git"><img id="git-logo" src="./assets/images/github-logo-light.png"></a></li>
+        <li><a href="li"><img id="li-logo" src="./assets/images/LI-In-Bug.png"></a></li>
+        <li><a href="email"><img id="email-logo" src="./assets/images/email-icon.png"></a></li>
       </ul>
-    </header>
+  </header>
 
-    <div class="sidebar">
-      <div class="form">
-        <div class="sidebar-title">Add a player here!</div>
-        <form class="player-form">
-          <input
-            type="text"
-            name="add-player"
-            placeholder="Enter a player's name"
-            required
-          />
-          <div class="seasons-select">
-            <label for="season-start">Seasons:</label>
+  <div class="sidebar">
+    <div class="form">
+      <div class="sidebar-title">Add a player here!</div>
+      <form class="player-form">
+        <input type="text" name="add-player" placeholder="Enter a player's name" required />
+        <div class="seasons-select">
+          <label for="season-start">Seasons:</label>
 
-            <select name="season-start" id="season-start"></select>
-            <label for="season-end">to:</label>
-            <select name="season-end" id="season-end"></select>
-          </div>
+          <select name="season-start" id="season-start"></select>
+          <label for="season-end">to:</label>
+          <select name="season-end" id="season-end"></select>
+        </div>
 
-          <input type="submit" value="Add" />
-        </form>
+        <input type="submit" value="Add" />
+      </form>
 
-        <form class="random-form">or you can...
-          <input type="submit" value="Add a random player" />
-        </form>
-      </div>
-      
-      <div class="players-container">
-        <h2 class="players-header" id="hidden">Players:</h2>
-        
-        <ul class="players"></ul>
-      </div>
+      <form class="random-form">or you can...
+        <input type="submit" value="Add a random player" />
+      </form>
+    </div>
+
+    <div class="players-container">
+      <h2 class="players-header" id="hidden">Players:</h2>
+
+      <ul class="players"></ul>
     </div>
   </div>
-    
-    <div class="graphs-side" id="hidden">
-      <ul class="graphs">
-        <li><canvas id="points"></canvas></li>
-        <li><canvas id="assists"></canvas></li>
-        <li><canvas id="rebounds"></canvas></li>
-        <li><canvas id="blocks"></canvas></li>
-        <li><canvas id="steals"></canvas></li>
-        <li><canvas id="minutes"></canvas></li>
-      </ul>
-    </div>
+  </div>
+
+  <div class="graphs-side" id="hidden">
+    <ul class="graphs">
+      <li><canvas id="points"></canvas></li>
+      <li><canvas id="assists"></canvas></li>
+      <li><canvas id="rebounds"></canvas></li>
+      <li><canvas id="blocks"></canvas></li>
+      <li><canvas id="steals"></canvas></li>
+      <li><canvas id="minutes"></canvas></li>
+    </ul>
+  </div>
 
 </html>
