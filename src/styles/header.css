@@ -1,20 +1,20 @@
 .header {
-    background-color: black;
-    color: white;
-    height: 3cm;
-    justify-content: center;
-    /* text-align: center; */
+  background-color: black;
+  color: white;
+  height: 3cm;
+  justify-content: center;
+  /* text-align: center; */
 }
 
 .header-nav {
-    text-align: center;
-    font-size: larger;
-    padding-top: 5px;
+  text-align: center;
+  font-size: larger;
+  padding-top: 5px;
 }
 
 .header-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }

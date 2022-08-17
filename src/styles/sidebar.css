@@ -1,67 +1,72 @@
 .sidebar {
-    display: inline-block;
-    width: 20%;
-    vertical-align: top;;
-    height: 100%;
-    margin: 1cm;
-    outline: 5px dashed black;
-    border-radius: 5px;
-    font-style: italic;
-    font-weight: bolder;
-    font-size: x-large;
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  height: 100%;
+  margin: 0.5cm;
+  outline: 5px dashed black;
+  border-radius: 5px;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: x-large;
 }
 
 .sidebar-title {
-    text-decoration: underline;
+  text-decoration: underline;
+  font-style: initial;
 }
 
 .form {
-    display: inline-block;
-    margin: 15px;
-    padding: 5px;
-    align-items: center;
-    /* outline: 3px solid red; */
-    border-radius: 5px;
-    width: 90%;
-    height: 20%;
+  display: inline-block;
+  margin: 15px;
+  padding: 5px;
+  align-items: center;
+  border-radius: 5px;
+  width: 90%;
+  height: 20%;
 }
 
 .players-container {
-    display: inline-block;
-    margin: 5px;
-    padding: 1px;
-    align-items: center;
-    /* outline: 3px solid blue; */
-    border-radius: 5px;
-    width: 95%;
-    height: 72.5%;
+  display: inline-block;
+  margin: 5px;
+  padding: 1px;
+  align-items: center;
+  /* outline: 3px solid blue; */
+  border-radius: 5px;
+  width: 95%;
+  height: 72.5%;
 }
 
 .players-container h2 {
-    text-decoration: underline;
-    margin: 5px;
+  text-decoration: underline;
+  font-style: initial;
+  margin: 5px;
 }
 
-input[type="submit"], select {
-    text-decoration: none;
-    background-color: burlywood;
-    font-weight: bold;
-    border-radius: 5px;
+input[type="submit"],
+select {
+  text-decoration: none;
+  background-color: burlywood;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 input[type="submit"] {
-    height: 1cm;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  height: 1cm;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 input[type="submit"]:hover {
-    background-color: lightgray;
-    opacity: 0.5;
-    align-items: baseline;
+  background-color: lightgray;
+  opacity: 0.5;
+  align-items: baseline;
 }
 
+input[type="submit"]:active {
+  box-shadow: 2px 2px 5px #fc894d;
+}
 .players li {
-    display: block;
-    font-weight: bolder;
+  display: block;
+  font-weight: bolder;
 }

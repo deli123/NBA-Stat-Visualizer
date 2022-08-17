@@ -4,6 +4,7 @@
   width: 75%;
   /* height: 100%; */
   position: relative;
+  padding-top: 10px;
 }
 
 .graphs {
@@ -23,10 +24,14 @@
   height: 100%;
   width: 100%;
   margin-bottom: 1cm;
-  /* z-index: 1; */
+  background-color: white;
 }
 
 .modal {
   border: 1px solid black;
+  display: none;
+}
+
+#hidden {
   display: none;
 }
