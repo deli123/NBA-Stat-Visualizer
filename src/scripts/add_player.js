@@ -2,9 +2,7 @@ import { getGraphs } from "../index";
 import * as Util from "./utils";
 import * as Players from "./players";
 
-const playerContainer = document.querySelector(".player-container");
 const players = document.querySelector(".players");
-const playerForm = document.querySelector(".player-form");
 const userInput = [];
 let index = 0;
 
@@ -77,7 +75,6 @@ const findPlayer = async (inputName) => {
 const _addPlayerHelper = async (playerName, seasonStart, seasonEnd) => {
   let li = document.createElement("li");
   li.innerText = `${playerName} (${seasonStart} - ${seasonEnd})`;
-  // li.style.color = color;
   li.setAttribute("id", playerName);
   players.appendChild(li);
 
