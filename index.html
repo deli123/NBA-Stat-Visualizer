@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./src/styles/header.css" />
   <link rel="stylesheet" href="./src/styles/sidebar.css" />
   <link rel="stylesheet" href="./src/styles/graphs.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="./dist/main.js" defer></script>
   <title>NBA Stat Visualizer</title>
 </head>
@@ -25,15 +26,28 @@
       <p>Visualizer</p>
     </h1>
     <ul class="header-list">
-      <li><a href="git"><img id="git-logo" src="./assets/images/github-logo-light.png"></a></li>
-      <li><a href="li"><img id="li-logo" src="./assets/images/LI-In-Bug.png"></a></li>
-      <li><a href="email"><img id="email-logo" src="./assets/images/email-icon.png"></a></li>
+      <li><a href="https://github.com/deli123"><img id="git-logo" src="./assets/images/github-logo-light.png"></a></li>
+      <li><a href="https://www.linkedin.com/in/derli/"><img id="li-logo" src="./assets/images/LI-In-Bug.png"></a></li>
+      <li><a href="mailto:liderek63@gmail.com"><img id="email-logo" src="./assets/images/email-icon.png"></a></li>
     </ul>
   </header>
 
   <div class="sidebar">
     <div class="form">
-      <div class="sidebar-title">Add a player here!</div>
+      <div class="sidebar-title">Add a player here!
+        <div class="tooltip">
+          <span id="tooltip-icon"><i class="fa fa-question-circle"></i></span>
+          <span id="tooltip-text">
+            <p>This website aims to provide a player's average regular season stats in 6 categories: points, assists,
+            rebounds, steals, blocks, and minutes. Since this website uses an API that only allows up to 60 requests per
+            minute, some requests may not be fulfilled. Therefore, some graphs may have missing data points.</p>
+            <br>
+          <p>An important note: data for the years of which a player hasn't played a game in will be automatically filled
+            with a zero.</p>
+          </span>
+        </div>
+      </div>
+
       <form class="player-form">
         <input type="text" name="add-player" placeholder="Enter a player's name" required />
         <div class="seasons-select">

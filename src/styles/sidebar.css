@@ -4,7 +4,7 @@
   vertical-align: top;
   height: 100%;
   margin: 0.5cm;
-  outline: 5px dashed black;
+  outline: 5px solid black;
   border-radius: 5px;
   font-style: italic;
   font-weight: 900;
@@ -69,4 +69,46 @@ input[type="submit"]:active {
 .players li {
   display: block;
   font-weight: bolder;
+}
+
+.tooltip {
+  /* display: inline-block; */
+  position: relative;
+  cursor: pointer;
+  padding: 7px;
+  float: right;
+}
+
+#tooltip-text {
+  position: absolute;
+  background-color: lightgray;
+  color: black;
+  padding: 20px;
+  border-radius: 7px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  width: 500px;
+  transform: translateX(5%);
+  z-index: 1;
+}
+
+#tooltip-text::before {
+  content: "";
+  position: absolute;
+  top: 29%;
+  left: -4%;
+  border: 15px solid;
+  border-color: lightgray;
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.tooltip:hover #tooltip-text {
+  top: -130%;
+  visibility: visible;
+  opacity: 1;
+}
+
+#tooltip-icon {
+  font-size: 36px;
 }
