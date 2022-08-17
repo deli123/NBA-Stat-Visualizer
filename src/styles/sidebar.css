@@ -80,7 +80,7 @@ input[type="submit"]:active {
 
 #tooltip-text {
   position: absolute;
-  background-color: lightgray;
+  background-color: #E0E0E0;
   color: black;
   padding: 20px;
   border-radius: 7px;
@@ -98,7 +98,7 @@ input[type="submit"]:active {
   top: 29%;
   left: -4%;
   border: 15px solid;
-  border-color: lightgray;
+  border-color: #E0E0E0;
   transform: rotate(45deg) translateY(-50%);
 }
 
