@@ -1,4 +1,5 @@
 import Chart from "chart.js/auto";
+import { getNumZeros } from "./utils";
 
 const CATEGORIES = {
   points: "pts",
@@ -74,7 +75,7 @@ export class Graph {
   // this function also has to be async
   addData = async (userInput, category, color) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
-    this.playerInfo.push([playerId, seasonStart]);
+    this.playerInfo.push([playerId, seasonStart, seasonEnd]);
 
     if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
 
@@ -94,11 +95,8 @@ export class Graph {
     };
 
     this.chart.data.datasets.push(dataset);
-    this.updateDatasets(seasonStart);
+    this.updateDatasets(seasonStart, seasonEnd);
     this.chart.data.labels = this.years;
-
-    let li = document.querySelector(".graphs");
-    li.style.backgroundColor = "white";
 
     this.chart.update();
   };
@@ -112,32 +110,43 @@ export class Graph {
     return decimal;
   };
 
-  addMissingYears = (newStartYear) => {
+  addMissingYears = (newStartYear, newEndYear) => {
     const oldStartYear = this.years[0];
     let missingYears = [];
-    for (let i = newStartYear; i < oldStartYear; i++) {
-      missingYears.push(i);
+    for (let i = parseInt(newStartYear); i < parseInt(oldStartYear); i++) {
+      missingYears.push(i.toString());
     }
-
     this.years = missingYears.concat(this.years);
+    missingYears = [];
+    const oldEndYear = this.years[this.years.length - 1];
+    for (let i = parseInt(oldEndYear) + 1; i <= parseInt(newEndYear); i++) {
+      missingYears.push(i.toString());
+    }
+    this.years = this.years.concat(missingYears);
+
+    this.chart.data.labels = this.years;
   };
 
   // in order to keep the X-Axis (Season Year) consistent,
-  // update the dataset by filling in the missing years (only at the beginning)
-  updateDatasets = (newStartYear) => {
-    if (newStartYear < this.years[0]) {
-      this.addMissingYears(newStartYear);
-    }
+  // update the dataset by filling in the missing years with 0's (only at the beginning)
+  updateDatasets = (newStartYear, newEndYear) => {
+    this.addMissingYears(newStartYear, newEndYear);
 
+    let missingData = [];
     for (let i = 0; i < this.chart.data.datasets.length; i++) {
+      missingData = [];
       let startYear = this.playerInfo[i][1];
-
-      if (newStartYear < startYear) {
-        while (this.chart.data.datasets[i].data.length < this.years.length) {
-          this.chart.data.datasets[i].data.unshift(0);
-        }
+      let numZeros = getNumZeros(this.chart.data.datasets[i].data);
+      let diff = startYear - this.years[0];
+      while (diff > numZeros) {
+        missingData.push(0);
+        diff -= 1;
       }
+      this.chart.data.datasets[i].data = missingData.concat(
+        this.chart.data.datasets[i].data
+      );
     }
+    this.chart.update();
   };
 
   addPlayerData = async (
@@ -148,7 +157,7 @@ export class Graph {
     category,
     color
   ) => {
-    this.playerInfo.push([playerId, seasonStart]);
+    this.playerInfo.push([playerId, seasonStart, seasonEnd]);
 
     if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
     let data = [];
@@ -165,7 +174,18 @@ export class Graph {
     let parsedData = await fetch("./player-data.json");
     let res = await parsedData.json();
 
-    for (let i = 0; i < res.length; i++) {
+    let i = 0;
+    for (i = i; i < res.length; i++) {
+      if (res[i].NAME === playerName) {
+        let seasons = res[i].Season.split("-");
+        let firstValidSeason = parseInt(seasons[0]);
+        for (let j = seasonStart; j < firstValidSeason; j++) {
+          data.push(0);
+        }
+        break;
+      }
+    }
+    for (i = i; i < res.length; i++) {
       if (res[i].NAME === playerName) {
         let seasons = res[i].Season.split("-");
         let season = parseInt(seasons[0]);
@@ -184,12 +204,8 @@ export class Graph {
     };
 
     this.chart.data.datasets.push(dataset);
-    this.updateDatasets(seasonStart);
+    this.updateDatasets(seasonStart, seasonEnd);
     this.chart.data.labels = this.years;
-
-    let li = document.querySelector(".graphs");
-    li.style.backgroundColor = "white";
-
     this.chart.update();
   };
 }

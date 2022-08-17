@@ -1,6 +1,6 @@
 import { getGraphs } from "../index";
 import * as Util from "./utils";
-import * as Players from "./players"
+import * as Players from "./players";
 
 const playerContainer = document.querySelector(".player-container");
 const players = document.querySelector(".players");
@@ -80,6 +80,11 @@ const _addPlayerHelper = async (playerName, seasonStart, seasonEnd) => {
   // li.style.color = color;
   li.setAttribute("id", playerName);
   players.appendChild(li);
+
+  let graphsDiv = document.querySelector(".graphs-side");
+  graphsDiv.removeAttribute("id");
+  let playersHeader = document.querySelector(".players-header");
+  playersHeader.removeAttribute("id");
 };
 
 export const addRandomPlayer = (e) => {
@@ -89,9 +94,9 @@ export const addRandomPlayer = (e) => {
   let id = 0;
   let playerName = Players.players[index];
   index += 1;
-  if (index === Players.players.length) index = 0;
-  let seasonStart = Util.generateRandomInt(2008, 2013);
-  let seasonEnd = Util.generateRandomInt(2013, 2021);
+  if (index >= Players.players.length) index = 0;
+  let seasonStart = Util.generateRandomInt(2008, 2014);
+  let seasonEnd = Util.generateRandomInt(2014, 2021);
 
   _addPlayerHelper(playerName, seasonStart, seasonEnd);
   for (let i = 0; i < graphs.length; i++) {
