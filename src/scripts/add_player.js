@@ -78,10 +78,15 @@ const _addPlayerHelper = async (playerName, seasonStart, seasonEnd) => {
   li.setAttribute("id", playerName);
   players.appendChild(li);
 
+  // remove #hidden to show the graphs and players-header
   let graphsDiv = document.querySelector(".graphs-side");
   graphsDiv.removeAttribute("id");
   let playersHeader = document.querySelector(".players-header");
   playersHeader.removeAttribute("id");
+
+  // close popup window
+  let popUp = document.querySelector(".popup");
+  popUp.style.display = "none";
 };
 
 export const addRandomPlayer = (e) => {

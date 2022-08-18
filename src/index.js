@@ -7,6 +7,19 @@ PlayerForm.createSeasonsDropdown();
 playerForm.addEventListener("submit", PlayerForm.addPlayer);
 randomForm.addEventListener("submit", PlayerForm.addRandomPlayer);
 
+// load popup window right after the website loads
+window.addEventListener("load", () => {
+  setTimeout(function open(event) {
+    document.querySelector(".popup").style.display = "block";
+  }, 1);
+});
+
+let popUp = document.querySelector(".popup");
+// close popup window by clicking the 'X' button
+document.querySelector("#close").addEventListener("click", () => {
+  popUp.style.display = "none";
+});
+
 const ctxPoints = document.getElementById("points").getContext("2d");
 const ctxAssists = document.getElementById("assists").getContext("2d");
 const ctxRebounds = document.getElementById("rebounds").getContext("2d");

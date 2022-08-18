@@ -1,8 +1,326 @@
-/*!*************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
-  \*************************************************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/css_reset.css ***!
+  \********************************************************************************************************/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/graphs.css ***!
+  \*****************************************************************************************************/
+.graphs-side {
+  background-color: transparent;
+  display: inline-block;
+  width: 75%;
+  position: relative;
+  padding-top: 10px;
+}
+
+.graphs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  list-style: none;
+}
+
+.graphs li {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 1cm;
+  background-color: white;
+}
+
+.modal {
+  border: 1px solid black;
+  display: none;
+}
+
+#hidden {
+  display: none;
+}
+
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/header.css ***!
+  \*****************************************************************************************************/
 html {
   background-color: bisque;
   background-image: url("/assets/images/background.jpg");
   background-size: 100vw;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 2cm;
+}
+
+.header-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 10%;
+  margin-right: 1cm;
+}
+
+h1 {
+  display: flex;
+  font-size: 36px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+}
+
+.dummy {
+  width: 10%;
+  margin-left: 1cm;
+}
+
+img {
+  width: 3vw;
+  height: 3vw;
+  margin-right: 3px;
+  padding-left: 5px;
+}
+
+#email-logo {
+  outline: 3px solid black;
+  border-radius: 10px;
+}
+
+#git-logo {
+  padding-right: 4px;
+}
+
+p {
+  margin-left: 7.5px;
+}
+
+#n {
+  color: blue;
+  margin: 0;
+}
+
+#b {
+  color: white;
+  margin: 0;
+}
+
+#a {
+  color: red;
+  margin: 0;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/sidebar.css ***!
+  \******************************************************************************************************/
+.sidebar {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  height: 100%;
+  margin: 0.5cm;
+  outline: 5px solid black;
+  border-radius: 5px;
+  font-style: italic;
+  font-weight: 900;
+  font-size: x-large;
+  background-color: bisque;
+}
+
+.sidebar-title {
+  text-decoration: underline;
+  font-style: initial;
+}
+
+.form {
+  display: inline-block;
+  margin: 15px;
+  padding: 5px;
+  align-items: center;
+  border-radius: 5px;
+  width: 90%;
+  height: 20%;
+}
+
+.players-container {
+  display: inline-block;
+  margin: 5px;
+  padding: 1px;
+  align-items: center;
+  border-radius: 5px;
+  width: 95%;
+  height: 72.5%;
+  font-style: initial;
+}
+
+.players-container h2 {
+  text-decoration: underline;
+  padding-bottom: 5px;
+}
+
+input[type="submit"],
+select {
+  text-decoration: none;
+  background-color: burlywood;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  height: 1cm;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: lightgray;
+  opacity: 0.5;
+  align-items: baseline;
+}
+
+input[type="submit"]:active {
+  box-shadow: 2px 2px 5px #fc894d;
+}
+.players li {
+  display: block;
+  font-weight: bolder;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  padding: 7px;
+  float: right;
+}
+
+#tooltip-text {
+  position: absolute;
+  background-color: #E0E0E0;
+  color: black;
+  padding: 20px;
+  border-radius: 7px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  width: 500px;
+  transform: translateX(5%);
+  z-index: 1;
+}
+
+#tooltip-text::before {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: -4%;
+  border: 15px solid;
+  border-color: #E0E0E0;
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.tooltip:hover #tooltip-text {
+  top: -130%;
+  visibility: visible;
+  opacity: 1;
+}
+
+#tooltip-icon {
+  font-size: 36px;
+}
+
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/popup.css ***!
+  \****************************************************************************************************/
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.popup {
+  background-color: white;
+  width: 450px;
+  padding: 20px 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  display: none;
+}
+
+.popup button {
+  display: block;
+  margin: 0 0 0px auto;
+  background-color: transparent;
+  font-size: 30px;
+  color: grey;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.popup p {
+  font-size: 16px;
+  text-align: justify;
+  margin: 20px 0;
+}
+
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+

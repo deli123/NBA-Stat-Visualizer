@@ -1,91 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="./dist/main.js" defer></script>
+    <title>NBA Stat Visualizer</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./src/styles/css_reset.css" />
-  <link rel="stylesheet" href="./dist/main.css" />
-  <link rel="stylesheet" href="./src/styles/header.css" />
-  <link rel="stylesheet" href="./src/styles/sidebar.css" />
-  <link rel="stylesheet" href="./src/styles/graphs.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="./dist/main.js" defer></script>
-  <title>NBA Stat Visualizer</title>
-</head>
+  <body>
+    <header class="header">
+      <div class="dummy"></div>
+      <h1>
+        <p id="n">N</p>
+        <p id="b">B</p>
+        <p id="a">A</p>
+        <p>Stats</p>
+        <p>Visualizer</p>
+      </h1>
+      <ul class="header-list">
+        <li>
+          <a href="https://github.com/deli123"
+            ><img id="git-logo" src="./assets/images/github-logo-light.png"
+          /></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/derli/"
+            ><img id="li-logo" src="./assets/images/LI-In-Bug.png"
+          /></a>
+        </li>
+        <li>
+          <a href="mailto:liderek63@gmail.com"
+            ><img id="email-logo" src="./assets/images/email-icon.png"
+          /></a>
+        </li>
+      </ul>
+    </header>
 
-<body>
-  <header class="header">
-    <div class="dummy"></div>
-    <h1>
-      <p id="n">N</p>
-      <p id="b">B</p>
-      <p id="a">A</p>
-      <p>Stats</p>
-      <p>Visualizer</p>
-    </h1>
-    <ul class="header-list">
-      <li><a href="https://github.com/deli123"><img id="git-logo" src="./assets/images/github-logo-light.png"></a></li>
-      <li><a href="https://www.linkedin.com/in/derli/"><img id="li-logo" src="./assets/images/LI-In-Bug.png"></a></li>
-      <li><a href="mailto:liderek63@gmail.com"><img id="email-logo" src="./assets/images/email-icon.png"></a></li>
-    </ul>
-  </header>
-
-  <div class="sidebar">
-    <div class="form">
-      <div class="sidebar-title">Add a player here!
-        <div class="tooltip">
-          <span id="tooltip-icon"><i class="fa fa-question-circle"></i></span>
-          <span id="tooltip-text">
-            <p>This website aims to provide a player's average regular season stats in 6 categories: points, assists,
-              rebounds, steals, blocks, and minutes. Since this website uses an API that only allows up to 60 requests
-              per
-              minute, some requests may not be fulfilled. Therefore, some graphs may have missing data points.</p>
-            <br>
-            <p>An important note: data for the years of which a player hasn't played a game in will be automatically
-              filled
-              with a zero.</p>
-          </span>
+    <div class="sidebar">
+      <div class="form">
+        <div class="sidebar-title">
+          Add a player here!
+          <div class="tooltip">
+            <span id="tooltip-icon"><i class="fa fa-question-circle"></i></span>
+            <span id="tooltip-text">
+              <p>
+                This website aims to provide a player's average regular season
+                stats in 6 categories: points, assists, rebounds, steals,
+                blocks, and minutes. Since this website uses an API that only
+                allows up to 60 requests per minute, some requests may not be
+                fulfilled. Therefore, some graphs may have missing data points.
+                If this happens, try decreasing the range of seasons or waiting a
+                minute.
+              </p>
+              <br />
+              <p>
+                An important note: data for the years of which a player hasn't
+                played a game in will be automatically filled with a zero.
+              </p>
+            </span>
+          </div>
         </div>
+
+        <form class="player-form">
+          <input
+            type="text"
+            name="add-player"
+            placeholder="Enter a player's name"
+            required
+          />
+          <div class="seasons-select">
+            <label for="season-start">Seasons:</label>
+
+            <select name="season-start" id="season-start"></select>
+            <label for="season-end">to:</label>
+            <select name="season-end" id="season-end"></select>
+          </div>
+
+          <input type="submit" value="Add" />
+        </form>
+
+        <form class="random-form">
+          or you can...
+          <input type="submit" value="Add a random player" />
+        </form>
       </div>
 
-      <form class="player-form">
-        <input type="text" name="add-player" placeholder="Enter a player's name" required />
-        <div class="seasons-select">
-          <label for="season-start">Seasons:</label>
+      <div class="players-container">
+        <h2 class="players-header" id="hidden">Players:</h2>
 
-          <select name="season-start" id="season-start"></select>
-          <label for="season-end">to:</label>
-          <select name="season-end" id="season-end"></select>
-        </div>
-
-        <input type="submit" value="Add" />
-      </form>
-
-      <form class="random-form">or you can...
-        <input type="submit" value="Add a random player" />
-      </form>
+        <ul class="players"></ul>
+      </div>
     </div>
 
-    <div class="players-container">
-      <h2 class="players-header" id="hidden">Players:</h2>
-
-      <ul class="players"></ul>
+    <div class="graphs-side" id="hidden">
+      <ul class="graphs">
+        <li><canvas id="points"></canvas></li>
+        <li><canvas id="assists"></canvas></li>
+        <li><canvas id="rebounds"></canvas></li>
+        <li><canvas id="blocks"></canvas></li>
+        <li><canvas id="steals"></canvas></li>
+        <li><canvas id="minutes"></canvas></li>
+      </ul>
     </div>
-  </div>
-  </div>
 
-  <div class="graphs-side" id="hidden">
-    <ul class="graphs">
-      <li><canvas id="points"></canvas></li>
-      <li><canvas id="assists"></canvas></li>
-      <li><canvas id="rebounds"></canvas></li>
-      <li><canvas id="blocks"></canvas></li>
-      <li><canvas id="steals"></canvas></li>
-      <li><canvas id="minutes"></canvas></li>
-    </ul>
-  </div>
-</body>
-
+    <div class="popup">
+      <button id="close">&times;</button>
+      <h1>Welcome!</h1>
+      <p>
+        To get started, fill out the form in the top left corner, or click the
+        "Add a random player" button. Six graphs should then pop up over here.
+      </p>
+      <p>Also, check out the tooltip inside the form for more notes.</p>
+    </div>
+  </body>
 </html>

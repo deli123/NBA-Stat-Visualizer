@@ -1,5 +1,5 @@
-html {
-  background-color: bisque;
-  background-image: url("/assets/images/background.jpg");
-  background-size: 100vw;
-}
+@import "./styles/css_reset.css";
+@import "./styles/graphs.css";
+@import "./styles/header.css";
+@import "./styles/sidebar.css";
+@import "./styles/popup.css";
