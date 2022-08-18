@@ -2,7 +2,7 @@
 
 NBA Stats Visualizer aims to provide a player's average regular season
 stats in 6 categories: points, assists, rebounds, steals, blocks, and minutes.  
-These stats will be displayed in 6 different graphs for each respective category.
+These stats will be displayed in 6 different graphs for each corresponding category.
 
 
 ## Key Features
