@@ -1,6 +1,6 @@
 # NBA Stats Visualizer
 
-NBA Stats Visualizer aims to provide a player's average regular season
+[NBA Stats Visualizer](https://deli123.github.io/NBA-Stats-Visualizer/) aims to provide a player's average regular season
 stats in 6 categories: points, assists, rebounds, steals, blocks, and minutes.  
 These stats will be displayed in 6 different graphs for each corresponding category.
 
@@ -13,11 +13,11 @@ These stats will be displayed in 6 different graphs for each corresponding categ
 
 ## Technologies, Libraries, APIs
 - Chart.js to render line graphs
-- [balldontlie API](balldontlie.io) to fetch player data
+- [balldontlie API](https://www.balldontlie.io) to fetch player data
 - Webpack and Babel to bundle and transpile JavaScript code
 
 ## Notes
-Since this website uses the [balldontlie API](balldontlie.io) which only allows up to 60 requests per minute, some requests may not be fulfilled. Therefore, some graphs may have missing data points. If this happens, try decreasing the range of seasons or waiting a minute.  
+Since this website uses the [balldontlie API](https://www.balldontlie.io) which only allows up to 60 requests per minute, some requests may not be fulfilled. Therefore, some graphs may have missing data points. If this happens, try decreasing the range of seasons or waiting a minute.  
   
 The number of requests is equal to [**1 + (6 * *number of seasons*)**].  
 (**1** fetch to check for a valid player) and (**6** fetches for each stat category * **number of seasons**)
