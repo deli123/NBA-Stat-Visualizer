@@ -128,7 +128,7 @@ export class Graph {
   };
 
   // in order to keep the X-Axis (Season Year) consistent,
-  // update the dataset by filling in the missing years with 0's (only at the beginning)
+  // update the dataset by filling in the missing years with NaN's (only at the beginning)
   updateDatasets = (newStartYear, newEndYear) => {
     this.addMissingYears(newStartYear, newEndYear);
 
@@ -136,9 +136,9 @@ export class Graph {
     for (let i = 0; i < this.chart.data.datasets.length; i++) {
       missingData = [];
       let startYear = this.playerInfo[i][1];
-      let numZeros = Util.getNumNaNs(this.chart.data.datasets[i].data);
+      let numNaNs = Util.getNumNaNs(this.chart.data.datasets[i].data);
       let diff = startYear - this.years[0];
-      while (diff > numZeros) {
+      while (diff > numNaNs) {
         missingData.push(NaN);
         diff -= 1;
       }
