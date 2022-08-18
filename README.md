@@ -7,6 +7,7 @@ These stats will be displayed in 6 different graphs for each corresponding categ
 
 ## Key Features
 - 6 distinct graphs for points, assists, rebounds, steals, blocks, and minutes
+  - Hovering over a specific data point will display a small tooltip above it that shows the year, player, and stat number.
 - The user can search for a player with a specific range of seasons
 - *Add a random player* button that will randomly find a player and choose a random range of seasons
 
