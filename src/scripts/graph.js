@@ -1,5 +1,5 @@
 import Chart from "chart.js/auto";
-import { getNumZeros } from "./utils";
+import * as Util from "./utils";
 
 const CATEGORIES = {
   points: "pts",
@@ -136,10 +136,10 @@ export class Graph {
     for (let i = 0; i < this.chart.data.datasets.length; i++) {
       missingData = [];
       let startYear = this.playerInfo[i][1];
-      let numZeros = getNumZeros(this.chart.data.datasets[i].data);
+      let numZeros = Util.getNumNaNs(this.chart.data.datasets[i].data);
       let diff = startYear - this.years[0];
       while (diff > numZeros) {
-        missingData.push(0);
+        missingData.push(NaN);
         diff -= 1;
       }
       this.chart.data.datasets[i].data = missingData.concat(

@@ -7,10 +7,10 @@ export const generateRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-export const getNumZeros = (arr) => {
+export const getNumNaNs = (arr) => {
   let count = 0;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 0) {
+    if (Object.is(arr[i], NaN)) {
       count += 1;
     }
   }
