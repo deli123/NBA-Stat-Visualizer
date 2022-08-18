@@ -3,14 +3,15 @@
   display: inline-block;
   width: 75%;
   position: relative;
-  padding-top: 10px;
+  margin-top: 10px;
+  outline: 5px solid black;
 }
 
 .graphs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: 100%;
+  width: 99.5%;
   height: 100%;
   list-style: none;
 }
