@@ -4,8 +4,11 @@
 stats in 6 categories: points, assists, rebounds, steals, blocks, and minutes.  
 These stats will be displayed in 6 different graphs for each corresponding category.
 
+## Demo
 
-## Key Features
+![alt text](demo.gif)
+
+## Features
 - 6 distinct graphs for points, assists, rebounds, steals, blocks, and minutes
   - Hovering over a specific data point will display a small tooltip above it that shows the year, player, and stat number.
 - The user can search for a player with a specific range of seasons
@@ -16,7 +19,7 @@ These stats will be displayed in 6 different graphs for each corresponding categ
 - [balldontlie API](https://www.balldontlie.io) to fetch player data
 - Webpack and Babel to bundle and transpile JavaScript code
 
-## Notes
+## Additional Information
 Since this website uses the [balldontlie API](https://www.balldontlie.io) which only allows up to 60 requests per minute, some requests may not be fulfilled. Therefore, some graphs may have missing data points. If this happens, try decreasing the range of seasons or waiting a minute.  
   
 The number of requests is equal to [**1 + (6 * *number of seasons*)**].  
