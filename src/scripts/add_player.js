@@ -6,7 +6,7 @@ const players = document.querySelector(".players");
 const userInput = [];
 
 export const createSeasonsDropdown = () => {
-  let currentYear = new Date().getFullYear() - 1;
+  let currentYear = new Date().getFullYear();
   let dropdownStart = document.getElementById("season-start");
   let dropdownEnd = document.getElementById("season-end");
 
@@ -55,7 +55,7 @@ const findPlayer = async (inputName) => {
   obj = await res.json();
 
   if (obj.data.length === 0) {
-    alert("Unable to find player, please enter an exact name (case sensitive)");
+    alert("Unable to find player, please enter an exact name!");
     return;
   }
   // if multiple players are found, search through all of them for an exact match
@@ -71,7 +71,7 @@ const findPlayer = async (inputName) => {
     }
     if (!playerFound) {
       alert(
-        "Unable to find player, please enter an exact name (case sensitive)"
+        "Unable to find player, please enter an exact name!"
       );
       return;
     }
@@ -121,8 +121,8 @@ export const addRandomPlayer = (e) => {
   let id = 0;
   let index = Util.generateRandomInt(0, 51);
   let playerName = Players.players[index];
-  let seasonStart = Util.generateRandomInt(2008, 2015);
-  let seasonEnd = Util.generateRandomInt(2014, 2022);
+  let seasonStart = Util.generateRandomInt(2008, (new Date().getFullYear() - 7));
+  let seasonEnd = Util.generateRandomInt(new Date().getFullYear() - 8, new Date().getFullYear() + 1);
 
   _addPlayerSideBar(playerName, seasonStart, seasonEnd);
   for (let i = 0; i < graphs.length; i++) {
