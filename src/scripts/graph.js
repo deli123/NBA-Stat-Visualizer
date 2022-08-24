@@ -46,68 +46,36 @@ export class Graph {
     return seasons;
   };
 
-  getData = async (id, seasonStart, seasonEnd, category) => {
-    this.playerId = id;
-    let abbrev = CATEGORIES[category];
-    const data = [];
-
-    for (let i = seasonStart; i <= seasonEnd; i++) {
-      let url = `https://www.balldontlie.io/api/v1/season_averages?season=${i}&player_ids[]=${id}`;
-      let obj;
-      let res = await fetch(url);
-      obj = await res.json();
-
-      if (obj.data.length === 0) {
-        if (abbrev === "min") {
-          data.push("00:00");
-        } else {
-          data.push(0);
-        }
-      } else {
-        data.push(obj.data[0][abbrev]);
-      }
-    }
-
-    return data;
-  };
-
-  // because addData() calls the getData() async function,
+  // because addAllData() calls the getAllData() async function,
   // this function also has to be async
-  addData = async (userInput, category, color) => {
+  addAllData = async (userInput, graphs, color) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
     this.playerInfo.push([playerId, seasonStart, seasonEnd]);
 
     if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
 
-    const data = await this.getData(playerId, seasonStart, seasonEnd, category);
+    const data = await Util.getAllData(playerId, seasonStart, seasonEnd);
 
-    if (category === "minutes") {
-      for (let i = 0; i < data.length; i++) {
-        data[i] = this.convertMinsToDecimal(data[i]);
-      }
+    // convert all strings in the minutes array to decimals
+    for (let i = 0; i < data[data.length - 1].length; i++) {
+      data[data.length - 1][i] = Util.convertMinsToDecimal(
+        data[data.length - 1][i]
+      );
     }
 
-    const dataset = {
-      label: playerName,
-      backgroundColor: color,
-      borderColor: color,
-      data: data,
-    };
+    for (let i = 0; i < data.length; i++) {
+      let dataset = {
+        label: playerName,
+        backgroundColor: color,
+        borderColor: color,
+        data: data[i],
+      };
 
-    this.chart.data.datasets.push(dataset);
-    this.updateDatasets(seasonStart, seasonEnd);
-    this.chart.data.labels = this.years;
-
-    this.chart.update();
-  };
-
-  convertMinsToDecimal = (minutes) => {
-    let mins = minutes.split(":");
-    for (let i = 0; i < mins.length; i++) {
-      mins[i] = parseInt(mins[i]);
+      graphs[i].years = this.years;
+      graphs[i].playerInfo = this.playerInfo;
+      graphs[i].chart.data.datasets.push(dataset);
+      graphs[i].updateDatasets(seasonStart, seasonEnd);
     }
-    let decimal = mins[0] + mins[1] / 60;
-    return decimal;
   };
 
   addMissingYears = (newStartYear, newEndYear) => {
@@ -205,7 +173,5 @@ export class Graph {
 
     this.chart.data.datasets.push(dataset);
     this.updateDatasets(seasonStart, seasonEnd);
-    this.chart.data.labels = this.years;
-    this.chart.update();
   };
 }

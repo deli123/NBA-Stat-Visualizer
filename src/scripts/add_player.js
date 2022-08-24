@@ -4,7 +4,6 @@ import * as Players from "./players";
 
 const players = document.querySelector(".players");
 const userInput = [];
-let index = 0;
 
 export const createSeasonsDropdown = () => {
   let currentYear = new Date().getFullYear() - 1;
@@ -48,31 +47,57 @@ const findPlayer = async (inputName) => {
   }
 
   const url = `https://www.balldontlie.io/api/v1/players?search=${inputName}`;
+  let playerName;
+  let playerId;
+  let playerFound = false;
   let obj;
   const res = await fetch(url);
   obj = await res.json();
 
-  if (obj.data.length > 1 || obj.data.length === 0) {
-    alert("Unable to find player, please enter an exact name");
-  } else {
-    let playerName = obj.data[0].first_name + " " + obj.data[0].last_name;
-    userInput.push([obj.data[0].id, playerName, seasonStart, seasonEnd]);
-
-    const color = Util.generateRandomColor();
-    _addPlayerHelper(playerName, seasonStart, seasonEnd);
-
-    let graphs = getGraphs();
-    for (let i = 0; i < graphs.length; i++) {
-      graphs[i].addData(
-        userInput[userInput.length - 1],
-        graphs[i].category,
-        color
+  if (obj.data.length === 0) {
+    alert("Unable to find player, please enter an exact name (case sensitive)");
+    return;
+  }
+  // if multiple players are found, search through all of them for an exact match
+  // if there is no exact match, throw an alert
+  else if (obj.data.length > 1) {
+    for (let i = 0; i < obj.data.length; i++) {
+      playerName = obj.data[i].first_name + " " + obj.data[i].last_name;
+      if (inputName.toLowerCase() === playerName.toLowerCase()) {
+        playerFound = true;
+        playerId = obj.data[i].id;
+        break;
+      }
+    }
+    if (!playerFound) {
+      alert(
+        "Unable to find player, please enter an exact name (case sensitive)"
       );
+      return;
     }
   }
+  // only one player is found
+  else {
+    playerId = obj.data[0].id;
+    playerName = obj.data[0].first_name + " " + obj.data[0].last_name;
+  }
+
+  userInput.push([playerId, playerName, seasonStart, seasonEnd]);
+
+  const color = Util.generateRandomColor();
+  _addPlayerSideBar(playerName, seasonStart, seasonEnd);
+
+  let graphs = getGraphs();
+
+  // all graphs will conform to the first graph's years and playerInfo
+  graphs[0].addAllData(
+    userInput[userInput.length - 1], // most recent user input
+    graphs,
+    color
+  );
 };
 
-const _addPlayerHelper = async (playerName, seasonStart, seasonEnd) => {
+const _addPlayerSideBar = async (playerName, seasonStart, seasonEnd) => {
   let li = document.createElement("li");
   li.innerText = `${playerName} (${seasonStart} - ${seasonEnd})`;
   li.setAttribute("id", playerName);
@@ -94,13 +119,12 @@ export const addRandomPlayer = (e) => {
   let graphs = getGraphs();
   const color = Util.generateRandomColor();
   let id = 0;
+  let index = Util.generateRandomInt(0, 51);
   let playerName = Players.players[index];
-  index += 1;
-  if (index >= Players.players.length) index = 0;
   let seasonStart = Util.generateRandomInt(2008, 2015);
   let seasonEnd = Util.generateRandomInt(2014, 2022);
 
-  _addPlayerHelper(playerName, seasonStart, seasonEnd);
+  _addPlayerSideBar(playerName, seasonStart, seasonEnd);
   for (let i = 0; i < graphs.length; i++) {
     graphs[i].addPlayerData(
       id,
