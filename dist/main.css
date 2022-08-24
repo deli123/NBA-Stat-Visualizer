@@ -1,3 +1,6 @@
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/css_reset.css ***!
+  \********************************************************************************************************/
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -46,6 +49,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/graphs.css ***!
+  \*****************************************************************************************************/
 .graphs-side {
   background-color: transparent;
   display: inline-block;
@@ -83,6 +89,9 @@ table {
   display: none;
 }
 
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/header.css ***!
+  \*****************************************************************************************************/
 html {
   background-image: url("../assets/images/background.jpg");
   background-size: 100vw;
@@ -152,6 +161,9 @@ p {
   margin: 0;
 }
 
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/sidebar.css ***!
+  \******************************************************************************************************/
 .sidebar {
   display: inline-block;
   width: 20%;
@@ -276,6 +288,9 @@ input[type="submit"]:active {
   clear: both;
   display: table;
 }
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/popup.css ***!
+  \****************************************************************************************************/
 *,
 *::before,
 *::after {
@@ -314,6 +329,7 @@ input[type="submit"]:active {
   margin: 20px 0;
 }
 
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
 
-
-/*# sourceMappingURL=main.css.map*/
