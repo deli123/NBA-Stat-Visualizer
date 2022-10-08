@@ -105,9 +105,9 @@ const _addPlayerSideBar = async (playerName, seasonStart, seasonEnd) => {
 
   // remove #hidden to show the graphs and players-header
   let graphsDiv = document.querySelector(".graphs-side");
-  graphsDiv.removeAttribute("id");
+  graphsDiv.classList.remove("hidden");
   let playersHeader = document.querySelector(".players-header");
-  playersHeader.removeAttribute("id");
+  playersHeader.classList.remove("hidden");
 
   // close popup window
   let popUp = document.querySelector(".popup");
