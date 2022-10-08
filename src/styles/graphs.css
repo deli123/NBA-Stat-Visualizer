@@ -26,11 +26,6 @@
   background-color: white;
 }
 
-.modal {
-  border: 1px solid black;
-  display: none;
-}
-
-#hidden {
+.hidden {
   display: none;
 }

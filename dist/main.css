@@ -80,12 +80,7 @@ table {
   background-color: white;
 }
 
-.modal {
-  border: 1px solid black;
-  display: none;
-}
-
-#hidden {
+.hidden {
   display: none;
 }
 
@@ -247,7 +242,7 @@ input[type="submit"]:active {
 
 #tooltip-text {
   position: absolute;
-  background-color: #e0e0e0;
+  background-color: #E8E8E8;
   color: black;
   padding: 20px;
   border-radius: 7px;
@@ -262,10 +257,10 @@ input[type="submit"]:active {
 #tooltip-text::before {
   content: "";
   position: absolute;
-  top: 22.5%;
+  top: 17.5%;
   left: -4%;
   border: 15px solid;
-  border-color: #e0e0e0;
+  border-color: #E8E8E8;
   transform: rotate(45deg) translateY(-50%);
 }
 
@@ -288,6 +283,14 @@ input[type="submit"]:active {
   clear: both;
   display: table;
 }
+
+b {
+  font-style: italic;
+}
+
+.strike {
+  text-decoration: line-through;
+}
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/popup.css ***!
   \****************************************************************************************************/
@@ -300,7 +303,7 @@ input[type="submit"]:active {
 }
 
 .popup {
-  background-color: white;
+  background-color: #F8F8F8;
   width: 450px;
   padding: 20px 30px;
   position: absolute;
