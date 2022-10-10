@@ -63,7 +63,6 @@ table {
 .graphs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   width: 100%;
   height: 100%;
   list-style: none;
@@ -76,12 +75,50 @@ table {
   align-items: center;
   height: 100%;
   width: 100%;
-  margin-bottom: 1cm;
+}
+
+canvas {
+  margin-left: 10px;
+  margin-bottom: 10px;
   background-color: white;
+  width: 100%;
 }
 
 .hidden {
   display: none;
+}
+
+
+@media all and (min-width: 3000px) {
+  .graphs-side {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 1295px) {
+  .graphs-side {
+    width: 72.5%;
+  }
+}
+
+@media all and (max-width: 1179px) {
+  .graphs-side {
+    width: 65%
+  }
+
+  .graphs {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media all and (max-width: 800px) {
+  .graphs-side {
+    width: 100%;
+  }
+
+  .graphs {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /*!*****************************************************************************************************!*\
@@ -196,12 +233,19 @@ p {
 /*!******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/sidebar.css ***!
   \******************************************************************************************************/
+.page-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-between;
+}
+
 .sidebar {
   display: inline-block;
   width: 20%;
   vertical-align: top;
   height: 100%;
-  margin: 0.5cm;
+  margin: 10px;
   margin-top: 10px;
   outline: 5px solid black;
   border-radius: 5px;
@@ -216,6 +260,11 @@ p {
   font-style: initial;
 }
 
+.sidebar-title p {
+  margin: 0;
+  padding-bottom: 10px;
+}
+
 .form {
   display: inline-block;
   margin: 15px;
@@ -226,9 +275,29 @@ p {
   height: 20%;
 }
 
+.player-form-input {
+  border: 1px solid black;
+  height: 40px;
+  border-radius: 5px;
+  width: 190px;
+  padding: 5px;
+}
+
+.seasons-select {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seasons-select select {
+  height: 37px;
+}
+
 .players-container {
   display: inline-block;
-  margin: 5px;
+  margin: 10px;
   padding: 1px;
   align-items: center;
   border-radius: 5px;
@@ -239,7 +308,7 @@ p {
 
 .players-container h2 {
   text-decoration: underline;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 input[type="submit"],
@@ -254,6 +323,8 @@ input[type="submit"] {
   height: 1cm;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 input[type="submit"]:hover {
@@ -267,7 +338,12 @@ input[type="submit"]:active {
 }
 .players li {
   display: block;
-  font-weight: bolder;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.fa-exclamation {
+  color: red;
 }
 
 .tooltip {
@@ -275,11 +351,12 @@ input[type="submit"]:active {
   cursor: pointer;
   padding: 7px;
   float: right;
+  top: -50px;
 }
 
 #tooltip-text {
   position: absolute;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   color: black;
   padding: 20px;
   border-radius: 7px;
@@ -294,10 +371,10 @@ input[type="submit"]:active {
 #tooltip-text::before {
   content: "";
   position: absolute;
-  top: 17.5%;
+  top: 16.5%;
   left: -4%;
   border: 15px solid;
-  border-color: #E8E8E8;
+  border-color: #e8e8e8;
   transform: rotate(45deg) translateY(-50%);
 }
 
@@ -311,7 +388,7 @@ input[type="submit"]:active {
   display: inline-block;
   font-size: 36px;
   border-radius: 60px;
-  box-shadow: 0 0 2px black;
+  box-shadow: 0 0 2px red;
   padding: 0.2em 0.4em;
 }
 
@@ -328,6 +405,70 @@ b {
 .strike {
   text-decoration: line-through;
 }
+
+@media all and (min-width: 3000px) {
+  .sidebar {
+    min-width: 500px;
+  }
+}
+
+@media all and (min-width: 1920px) {
+  .seasons-select {
+    display: inline-block;
+  }
+
+  .seasons-select input,
+  .seasons-select select {
+    margin: 10px;
+  }
+
+  .sidebar {
+    max-width: 450px;
+  }
+}
+
+@media all and (max-width: 1700px) {
+  .seasons-label {
+    display: flex;
+  }
+  .players li {
+    font-size: 1.125rem;
+  }
+
+  .form {
+    padding: 0;
+    margin-left: 10px;
+  }
+
+  .players-container {
+    margin: 5px;
+  }
+}
+
+@media all and (max-width: 1420px) {
+  .sidebar {
+    min-width: 300px;
+  }
+}
+
+@media all and (max-width: 1100px) {
+  .sidebar {
+    min-width: 320px;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .sidebar {
+    min-width: 400px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .sidebar {
+    width: 95%;
+  }
+}
+
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/popup.css ***!
   \****************************************************************************************************/
@@ -369,6 +510,21 @@ b {
   margin: 20px 0;
 }
 
+@media all and (min-width: 2200px) {
+  .popup {
+    width: 600px;
+    padding: 30px 40px;
+  }
+
+  .popup p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .popup h1 {
+    font-size: 2.5rem;
+  }
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

@@ -48,76 +48,77 @@
       </ul>
     </header>
 
-    <div class="sidebar">
-      <div class="form">
-        <div class="sidebar-title">
-          Add a player here!
-          <div class="tooltip clearfix">
-            <span class="clearfix" id="tooltip-icon"
-              ><i class="fa fa-exclamation"></i
-            ></span>
-            <span id="tooltip-text">
-              <p>
-                Since this website uses an API that only allows up to 60
-                requests per minute, some requests may not be fulfilled.
-                Therefore, some graphs may have missing data points. If this
-                happens, try decreasing the range of seasons or waiting a
-                minute.
-              </p>
-              <br />
-              <p>
-                Data for the years of which a player hasn't played a game in
-                will be automatically filled with a zero.
-              </p>
-              <br />
-              <p>
-                The <b>Add a random player</b> button randomly chooses a range
-                of seasons.
-              </p>
-            </span>
+    <div>
+      <div class="sidebar">
+        <div class="form">
+          <div class="sidebar-title">
+            <p>Add a player here!</p>
+            <div class="tooltip clearfix">
+              <span class="clearfix" id="tooltip-icon"
+                ><i class="fa fa-exclamation"></i
+              ></span>
+              <span id="tooltip-text">
+                <p>
+                  Since this website uses an API that only allows up to 60
+                  requests per minute, some requests may not be fulfilled.
+                  Therefore, some graphs may have missing data points. If this
+                  happens, try decreasing the range of seasons or waiting a
+                  minute.
+                </p>
+                <br />
+                <p>
+                  Data for the years of which a player hasn't played a game in
+                  will be automatically filled with a zero.
+                </p>
+                <br />
+                <p>
+                  The <b>Add a random player</b> button randomly chooses a range
+                  of seasons.
+                </p>
+              </span>
+            </div>
           </div>
+
+          <form class="player-form">
+            <input
+              class="player-form-input"
+              type="text"
+              name="add-player"
+              placeholder="Enter a player's name"
+              required
+            />
+            <div class="seasons-select">
+              <label for="season-start" class="seasons-label">Seasons:</label>
+              <select name="season-start" id="season-start"></select>
+              <label for="season-end">to:</label>
+              <select name="season-end" id="season-end"></select>
+              <input type="submit" value="Add" />
+            </div>
+          </form>
+
+          <form class="random-form">
+            or you can...
+            <input type="submit" value="Add a random player" />
+          </form>
         </div>
 
-        <form class="player-form">
-          <input
-            type="text"
-            name="add-player"
-            placeholder="Enter a player's name"
-            required
-          />
-          <div class="seasons-select">
-            <label for="season-start">Seasons:</label>
+        <div class="players-container">
+          <h2 class="players-header hidden">Players:</h2>
 
-            <select name="season-start" id="season-start"></select>
-            <label for="season-end">to:</label>
-            <select name="season-end" id="season-end"></select>
-          </div>
-
-          <input type="submit" value="Add" />
-        </form>
-
-        <form class="random-form">
-          or you can...
-          <input type="submit" value="Add a random player" />
-        </form>
+          <ul class="players"></ul>
+        </div>
       </div>
 
-      <div class="players-container">
-        <h2 class="players-header hidden">Players:</h2>
-
-        <ul class="players"></ul>
+      <div class="graphs-side hidden">
+        <ul class="graphs">
+          <li><canvas id="points"></canvas></li>
+          <li><canvas id="assists"></canvas></li>
+          <li><canvas id="rebounds"></canvas></li>
+          <li><canvas id="blocks"></canvas></li>
+          <li><canvas id="steals"></canvas></li>
+          <li><canvas id="minutes"></canvas></li>
+        </ul>
       </div>
-    </div>
-
-    <div class="graphs-side hidden">
-      <ul class="graphs">
-        <li><canvas id="points"></canvas></li>
-        <li><canvas id="assists"></canvas></li>
-        <li><canvas id="rebounds"></canvas></li>
-        <li><canvas id="blocks"></canvas></li>
-        <li><canvas id="steals"></canvas></li>
-        <li><canvas id="minutes"></canvas></li>
-      </ul>
     </div>
 
     <div class="popup">
