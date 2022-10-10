@@ -34,7 +34,6 @@ canvas {
   display: none;
 }
 
-
 @media all and (min-width: 3000px) {
   .graphs-side {
     width: 80%;
@@ -49,7 +48,7 @@ canvas {
 
 @media all and (max-width: 1179px) {
   .graphs-side {
-    width: 65%
+    width: 65%;
   }
 
   .graphs {

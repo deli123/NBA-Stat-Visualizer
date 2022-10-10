@@ -31,6 +31,21 @@ export const createSeasonsDropdown = () => {
   }
 };
 
+// userInput is an array of arrays
+// each index is an array of [playerId, playerName, seasonStart, seasonEnd]
+const isDuplicatePlayer = async (newInput) => {
+  for (let i = 0; i < userInput.length; i++) {
+    if (userInput[i][1].toLowerCase() === newInput[1].toLowerCase()) {
+      if (userInput[i][2] === newInput[2] && userInput[i][3] === newInput[3]) {
+        alert("Duplicate player detected!");
+        return true;
+      }
+    }
+  }
+
+  return false;
+};
+
 export const addPlayer = (e) => {
   e.preventDefault();
   let inputName = document.querySelector("input[name='add-player']").value;
@@ -70,9 +85,7 @@ const findPlayer = async (inputName) => {
       }
     }
     if (!playerFound) {
-      alert(
-        "Unable to find player, please enter an exact name!"
-      );
+      alert("Unable to find player, please enter an exact name!");
       return;
     }
   }
@@ -82,7 +95,12 @@ const findPlayer = async (inputName) => {
     playerName = obj.data[0].first_name + " " + obj.data[0].last_name;
   }
 
-  userInput.push([playerId, playerName, seasonStart, seasonEnd]);
+  let newInput = [playerId, playerName, seasonStart, seasonEnd];
+  if (await isDuplicatePlayer(newInput)) {
+    return;
+  } else {
+    userInput.push(newInput);
+  }
 
   const color = Util.generateRandomColor();
   _addPlayerSideBar(playerName, seasonStart, seasonEnd);
@@ -114,15 +132,25 @@ const _addPlayerSideBar = async (playerName, seasonStart, seasonEnd) => {
   popUp.style.display = "none";
 };
 
-export const addRandomPlayer = (e) => {
+export const addRandomPlayer = async (e) => {
   e.preventDefault();
   let graphs = getGraphs();
   const color = Util.generateRandomColor();
   let id = 0;
   let index = Util.generateRandomInt(0, 51);
   let playerName = Players.players[index];
-  let seasonStart = Util.generateRandomInt(2008, (new Date().getFullYear() - 7));
-  let seasonEnd = Util.generateRandomInt(new Date().getFullYear() - 8, new Date().getFullYear() + 1);
+  let seasonStart = Util.generateRandomInt(2008, new Date().getFullYear() - 7);
+  let seasonEnd = Util.generateRandomInt(
+    new Date().getFullYear() - 8,
+    new Date().getFullYear() + 1
+  );
+
+  let newInput = [id, playerName, seasonStart, seasonEnd];
+  if (await isDuplicatePlayer(newInput)) {
+    return;
+  } else {
+    userInput.push(newInput);
+  }
 
   _addPlayerSideBar(playerName, seasonStart, seasonEnd);
   for (let i = 0; i < graphs.length; i++) {

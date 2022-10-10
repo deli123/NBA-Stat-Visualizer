@@ -76,6 +76,10 @@
   padding-bottom: 10px;
 }
 
+.player-form-add {
+  width: 54px;
+}
+
 input[type="submit"],
 select {
   text-decoration: none;
@@ -177,7 +181,7 @@ b {
   }
 }
 
-@media all and (min-width: 1920px) {
+@media all and (min-width: 1921px) {
   .seasons-select {
     display: inline-block;
   }
