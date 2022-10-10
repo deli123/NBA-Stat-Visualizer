@@ -60,7 +60,7 @@ export class Graph {
         let lastPlayer = document.querySelector(".players");
         lastPlayer.removeChild(lastPlayer.lastChild);
         userInput.pop();
-        alert("Reached API limit, please wait a minute!");
+        alert("Reached API limit! Please decrease the range of seasons or wait a minute.");
       }
     );
 
