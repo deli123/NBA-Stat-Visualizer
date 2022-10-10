@@ -140,7 +140,7 @@ input[type="submit"]:active {
 #tooltip-text::before {
   content: "";
   position: absolute;
-  top: 16.5%;
+  top: 15%;
   left: -4%;
   border: 15px solid;
   border-color: #e8e8e8;

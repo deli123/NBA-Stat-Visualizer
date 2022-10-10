@@ -63,7 +63,8 @@
                   requests per minute, some requests may not be fulfilled.
                   Therefore, some graphs may have missing data points. If this
                   happens, try decreasing the range of seasons or waiting a
-                  minute.
+                  minute. The <b>Add</b> button will be disabled for 3 seconds
+                  after each attempt.
                 </p>
                 <br />
                 <p>
@@ -92,13 +93,22 @@
               <select name="season-start" id="season-start"></select>
               <label for="season-end">to:</label>
               <select name="season-end" id="season-end"></select>
-              <input class="player-form-add" type="submit" value="Add" />
+              <input
+                name="add-button"
+                class="player-form-add"
+                type="submit"
+                value="Add"
+              />
             </div>
           </form>
 
           <form class="random-form">
             or you can...
-            <input type="submit" value="Add a random player" />
+            <input
+              name="random-player-button"
+              type="submit"
+              value="Add a random player"
+            />
           </form>
         </div>
 

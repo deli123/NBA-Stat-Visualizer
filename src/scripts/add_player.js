@@ -31,13 +31,23 @@ export const createSeasonsDropdown = () => {
   }
 };
 
+// disable the 'Add' button for 3 seconds
+const disableButton = () => {
+  console.log("disable")
+  let button = document.querySelector("input[name='add-button']");
+  button.disabled = true;
+  setTimeout(() => {
+    button.disabled = false;
+  }, 3000);
+};
+
 // userInput is an array of arrays
 // each index is an array of [playerId, playerName, seasonStart, seasonEnd]
 const isDuplicatePlayer = async (newInput) => {
   for (let i = 0; i < userInput.length; i++) {
     if (userInput[i][1].toLowerCase() === newInput[1].toLowerCase()) {
       if (userInput[i][2] === newInput[2] && userInput[i][3] === newInput[3]) {
-        alert("Duplicate player detected!");
+        alert("Duplicate input detected!");
         return true;
       }
     }
@@ -100,6 +110,7 @@ const findPlayer = async (inputName) => {
     return;
   } else {
     userInput.push(newInput);
+    disableButton();
   }
 
   const color = Util.generateRandomColor();
