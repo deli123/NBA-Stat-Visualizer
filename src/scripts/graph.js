@@ -54,7 +54,19 @@ export class Graph {
 
     if (!this.years) this.years = this.getYears(seasonStart, seasonEnd);
 
-    const data = await Util.getAllData(playerId, seasonStart, seasonEnd);
+    const data = await Util.getAllData(playerId, seasonStart, seasonEnd).catch(
+      (error) => {
+        // remove the last input from the players list
+        let lastPlayer = document.querySelector(".players");
+        lastPlayer.removeChild(lastPlayer.lastChild);
+        userInput.pop();
+        alert("Reached API limit, please wait a minute!");
+      }
+    );
+
+    if (!data) {
+      return;
+    }
 
     // convert all strings in the minutes array to decimals
     for (let i = 0; i < data[data.length - 1].length; i++) {

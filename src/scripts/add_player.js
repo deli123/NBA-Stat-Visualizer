@@ -3,7 +3,7 @@ import * as Util from "./utils";
 import * as Players from "./players";
 
 const players = document.querySelector(".players");
-const userInput = [];
+var userInput = [];
 
 export const createSeasonsDropdown = () => {
   let currentYear = new Date().getFullYear();
@@ -33,12 +33,11 @@ export const createSeasonsDropdown = () => {
 
 // disable the 'Add' button for 3 seconds
 const disableButton = () => {
-  console.log("disable")
   let button = document.querySelector("input[name='add-button']");
   button.disabled = true;
   setTimeout(() => {
     button.disabled = false;
-  }, 3000);
+  }, 5000);
 };
 
 // userInput is an array of arrays
@@ -77,6 +76,10 @@ const findPlayer = async (inputName) => {
   let playerFound = false;
   let obj;
   const res = await fetch(url);
+  if (!res.ok) {
+    alert("Too many requests have fired! Please wait a minute.");
+    return;
+  }
   obj = await res.json();
 
   if (obj.data.length === 0) {

@@ -33,11 +33,16 @@
 .form {
   display: inline-block;
   margin: 15px;
+  margin-bottom: 0;
   padding: 5px;
   align-items: center;
   border-radius: 5px;
   width: 90%;
   height: 20%;
+}
+
+.random-form {
+  padding-top: 15px;
 }
 
 .player-form-input {
@@ -140,7 +145,7 @@ input[type="submit"]:active {
 #tooltip-text::before {
   content: "";
   position: absolute;
-  top: 15%;
+  top: 14%;
   left: -4%;
   border: 15px solid;
   border-color: #e8e8e8;

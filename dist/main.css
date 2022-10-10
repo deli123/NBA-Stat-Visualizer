@@ -349,11 +349,16 @@ p {
 .form {
   display: inline-block;
   margin: 15px;
+  margin-bottom: 0;
   padding: 5px;
   align-items: center;
   border-radius: 5px;
   width: 90%;
   height: 20%;
+}
+
+.random-form {
+  padding-top: 15px;
 }
 
 .player-form-input {
@@ -456,7 +461,7 @@ input[type="submit"]:active {
 #tooltip-text::before {
   content: "";
   position: absolute;
-  top: 15%;
+  top: 14%;
   left: -4%;
   border: 15px solid;
   border-color: #e8e8e8;
@@ -566,7 +571,7 @@ b {
 }
 
 .popup {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   width: 450px;
   padding: 20px 30px;
   position: absolute;
@@ -610,6 +615,7 @@ b {
     font-size: 2.5rem;
   }
 }
+
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
