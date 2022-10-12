@@ -31,13 +31,21 @@ export const createSeasonsDropdown = () => {
   }
 };
 
-// disable the 'Add' button for 3 seconds
+// disable the 'Add' button for a set time
 const disableButton = () => {
   let button = document.querySelector("input[name='add-button']");
   button.disabled = true;
-  setTimeout(() => {
-    button.disabled = false;
-  }, 5000);
+  let timeout = 5;
+  button.value = timeout;
+  let interval = setInterval(() => {
+    timeout -= 1;
+    button.value = timeout;
+    if (timeout === -1) {
+      button.disabled = false;
+      button.value = "Add";
+      clearInterval(interval);
+    }
+  }, 1000);
 };
 
 // userInput is an array of arrays
