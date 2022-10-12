@@ -10,6 +10,8 @@ const CATEGORIES = {
   minutes: "min",
 };
 
+var minuteTimer;
+
 export class Graph {
   constructor(context, category) {
     const config = {
@@ -60,13 +62,25 @@ export class Graph {
         let lastPlayer = document.querySelector(".players");
         lastPlayer.removeChild(lastPlayer.lastChild);
         userInput.pop();
-        alert("Reached API limit! Please decrease the range of seasons or wait a minute.");
+
+        // restart timer
+        if (minuteTimer) clearInterval(minuteTimer);
+        minuteTimer = 0;
+        minuteTimer = Util.displayTimer();
+        alert(
+          "Reached API limit! Please decrease the range of seasons or wait a minute."
+        );
       }
     );
 
     if (!data) {
       return;
     }
+
+    // stop timer if there is one running
+    Util.hideTimer();
+    if (minuteTimer) clearInterval(minuteTimer);
+    minuteTimer = 0;
 
     // convert all strings in the minutes array to decimals
     for (let i = 0; i < data[data.length - 1].length; i++) {

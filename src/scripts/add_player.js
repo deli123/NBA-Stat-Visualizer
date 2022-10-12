@@ -37,6 +37,7 @@ const disableButton = () => {
   button.disabled = true;
   let timeout = 5;
   button.value = timeout;
+
   let interval = setInterval(() => {
     timeout -= 1;
     button.value = timeout;

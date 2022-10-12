@@ -61,3 +61,25 @@ export const convertMinsToDecimal = (minutes) => {
   let decimal = mins[0] + mins[1] / 60;
   return decimal;
 };
+
+// display a minute timer due to reaching the API requests limit
+export const displayTimer = () => {
+  let timer = document.querySelector(".minute-timer");
+  timer.style.display = "block";
+
+  let timeout = 60;
+  timer.innerText = `Timer: ${timeout}`;
+  return setInterval(() => {
+    timeout -= 1;
+    timer.innerText = `Timer: ${timeout}`;
+    if (timeout === -1) {
+      timer.style.display = "none";
+      clearInterval(interval);
+    }
+  }, 1000);
+};
+
+export const hideTimer = () => {
+  let timer = document.querySelector(".minute-timer");
+  timer.style.display = "none";
+};
