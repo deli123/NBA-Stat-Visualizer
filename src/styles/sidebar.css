@@ -91,7 +91,7 @@
 }
 
 input[name="add-button"]:disabled {
-  color: black;
+  color: red;
 }
 
 input[type="submit"],
