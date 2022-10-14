@@ -21,7 +21,8 @@ These stats will be displayed in 6 different graphs for each corresponding categ
 - Webpack and Babel to bundle and transpile JavaScript code
 
 ## Additional Information
-- Since this website uses the [balldontlie API](https://www.balldontlie.io) which only allows up to 60 requests per minute, some requests may not be fulfilled. Therefore, some graphs may have missing data points. If this happens, try decreasing the range of seasons or waiting a minute. 
+- Since this website uses the [BallDontLie API](https://www.balldontlie.io) which only allows up to 60 requests per minute, some requests may not be fulfilled. When this limit is reached, the *Add* button will be disabled for 60 seconds.
+
 - This API only includes data from seasons 1979 to current.
   
 - The number of requests is equal to [**1 + *number of seasons*)**]. The first request is used to check if a player exists.  

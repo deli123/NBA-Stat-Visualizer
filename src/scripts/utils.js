@@ -83,3 +83,23 @@ export const hideTimer = () => {
   let timer = document.querySelector(".minute-timer");
   timer.style.display = "none";
 };
+
+// disable the 'Add' button for a set time
+export const disableButton = (seconds) => {
+  let button = document.querySelector("input[name='add-button']");
+  button.disabled = true;
+  let timeout = seconds;
+  button.value = timeout;
+
+  let interval = setInterval(() => {
+    timeout -= 1;
+    button.value = timeout;
+    if (timeout === -1) {
+      button.disabled = false;
+      button.value = "Add";
+      clearInterval(interval);
+    }
+  }, 1000);
+
+  return interval;
+};

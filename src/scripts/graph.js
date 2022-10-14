@@ -10,7 +10,7 @@ const CATEGORIES = {
   minutes: "min",
 };
 
-var minuteTimer;
+var disableButton;
 
 export class Graph {
   constructor(context, category) {
@@ -50,7 +50,7 @@ export class Graph {
 
   // because addAllData() calls the getAllData() async function,
   // this function also has to be async
-  addAllData = async (userInput, graphs, color) => {
+  addAllData = async (userInput, graphs, color, disableButton) => {
     const [playerId, playerName, seasonStart, seasonEnd] = userInput;
     this.playerInfo.push([playerId, seasonStart, seasonEnd]);
 
@@ -63,12 +63,12 @@ export class Graph {
         lastPlayer.removeChild(lastPlayer.lastChild);
         userInput.pop();
 
-        // restart timer
-        if (minuteTimer) clearInterval(minuteTimer);
-        minuteTimer = 0;
-        minuteTimer = Util.displayTimer();
+        // reset the timer and disable button for 60 seconds
+        if (disableButton) clearInterval(disableButton);
+        disableButton = 0;
+        disableButton = Util.disableButton(60);
         alert(
-          "Reached API limit! Please decrease the range of seasons or wait a minute."
+          "Reached API limit! Please wait a minute."
         );
       }
     );
@@ -76,11 +76,6 @@ export class Graph {
     if (!data) {
       return;
     }
-
-    // stop timer if there is one running
-    Util.hideTimer();
-    if (minuteTimer) clearInterval(minuteTimer);
-    minuteTimer = 0;
 
     // convert all strings in the minutes array to decimals
     for (let i = 0; i < data[data.length - 1].length; i++) {

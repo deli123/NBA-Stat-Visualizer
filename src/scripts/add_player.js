@@ -4,6 +4,7 @@ import * as Players from "./players";
 
 const players = document.querySelector(".players");
 var userInput = [];
+var disableButton;
 
 export const createSeasonsDropdown = () => {
   let currentYear = new Date().getFullYear();
@@ -29,24 +30,6 @@ export const createSeasonsDropdown = () => {
     dropdownStart.appendChild(opt1);
     dropdownEnd.appendChild(opt2);
   }
-};
-
-// disable the 'Add' button for a set time
-const disableButton = () => {
-  let button = document.querySelector("input[name='add-button']");
-  button.disabled = true;
-  let timeout = 5;
-  button.value = timeout;
-
-  let interval = setInterval(() => {
-    timeout -= 1;
-    button.value = timeout;
-    if (timeout === -1) {
-      button.disabled = false;
-      button.value = "Add";
-      clearInterval(interval);
-    }
-  }, 1000);
 };
 
 // userInput is an array of arrays
@@ -87,6 +70,7 @@ const findPlayer = async (inputName) => {
   const res = await fetch(url);
   if (!res.ok) {
     alert("Too many requests have fired! Please wait a minute.");
+    disableButton = Util.disableButton(60);
     return;
   }
   obj = await res.json();
@@ -122,7 +106,7 @@ const findPlayer = async (inputName) => {
     return;
   } else {
     userInput.push(newInput);
-    disableButton();
+    disableButton = Util.disableButton(5);
   }
 
   const color = Util.generateRandomColor();
@@ -134,7 +118,8 @@ const findPlayer = async (inputName) => {
   graphs[0].addAllData(
     userInput[userInput.length - 1], // most recent user input
     graphs,
-    color
+    color,
+    disableButton
   );
 };
 

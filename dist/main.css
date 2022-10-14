@@ -410,6 +410,10 @@ p {
 
 input[name="add-button"]:disabled {
   color: red;
+  border: 2px solid red;
+  background-color: lightgray;
+  font-weight: bolder;
+  font-size: 1.5rem;
 }
 
 input[type="submit"],
@@ -519,7 +523,7 @@ b {
 .minute-timer {
   display: none;
   color: red;
-  font-style:normal;
+  font-style: normal;
   margin-top: 10px;
   margin-bottom: 10px;
 }
