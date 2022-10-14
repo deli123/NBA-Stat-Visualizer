@@ -10,8 +10,6 @@ const CATEGORIES = {
   minutes: "min",
 };
 
-var disableButton;
-
 export class Graph {
   constructor(context, category) {
     const config = {
